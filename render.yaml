@@ -21,3 +21,5 @@ services:
       - {type: redirect, source: /blog/*, destination: /}
       - {type: redirect, source: /projects/kitchen-and-marble-bathroom-renovation/*, destination: /projects/west-village-marble-kitchen-bathroom-renovation/}
       - {type: redirect, source: /projects/kitchen-and-marble-bathroom-renovation, destination: /projects/west-village-marble-kitchen-bathroom-renovation/}
+      - {type: redirect, source: /projects/modern-kitchen-and-dining-renovation/*, destination: /projects/upper-west-side-west-end-avenue-kitchen-renovation/}
+      - {type: redirect, source: /projects/modern-kitchen-and-dining-renovation, destination: /projects/upper-west-side-west-end-avenue-kitchen-renovation/}
