@@ -311,3 +311,5 @@ exec(open(ROOT+'/build/sitewide_hamptons.py').read(),globals())
 exec(open(ROOT+'/build/farmingdale.py').read(),globals())
 # ---- painting / plaster / drywall: nav, grid, footer, schema, drywall page upgrade
 exec(open(ROOT+'/build/services_extra.py').read(),globals())
+# ---- optional copy tweaks (owner approval pending; separate commit)
+exec(open(ROOT+'/build/copy_tweaks.py').read(),globals())
