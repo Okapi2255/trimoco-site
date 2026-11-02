@@ -48,8 +48,8 @@
   ]
  },
  {
-  "slug": "kitchen-cabinetry-and-backsplash-installation",
-  "title": "Kitchen Cabinetry and Backsplash Installation",
+  "slug": "chelsea-manhattan-kitchen-cabinetry-backsplash",
+  "title": "Chelsea, Manhattan: Kitchen Cabinetry and Backsplash Installation",
   "photos": [
    "drive_1pyEfOXsVM99v_RoVycR6J7shlVJtAhk8.webp",
    "drive_1Wa1DLO09vJR6XJW73DrMgUhsdkpECbY8.webp",
@@ -64,8 +64,8 @@
   ]
  },
  {
-  "slug": "green-kitchen-cabinetry-installation",
-  "title": "Custom Kitchen Cabinetry Installation (Green Cabinets)",
+  "slug": "chelsea-manhattan-green-kitchen-cabinetry",
+  "title": "Chelsea, Manhattan: Custom Kitchen Cabinetry Installation (Green Cabinets)",
   "photos": [
    "drive_18JTgD1ryudQ8MqZq1GjTap2wVc_jkOfX.webp",
    "drive_1RZo4s6BsGYa9pZ3WNrHWLbDYxyPYNQb5.webp",
@@ -80,8 +80,8 @@
   ]
  },
  {
-  "slug": "blue-kitchen-remodel-custom-cabinetry",
-  "title": "Modern Kitchen Remodel with Custom Cabinetry (Blue Cabinets)",
+  "slug": "manhattan-blue-kitchen-custom-cabinetry",
+  "title": "Manhattan: Modern Kitchen Remodel with Custom Cabinetry (Blue Cabinets)",
   "photos": [
    "drive_16Y3FJWCdKS6BqaK30oLvM1SYrSGZJsMM.webp",
    "drive_1epzakXa-nVvoIjSeNwrqixktrl8VfjUU.webp",
@@ -95,20 +95,34 @@
  },
  {
   "slug": "soho-manhattan-bathroom-walk-in-shower",
-  "title": "SoHo, Manhattan: Bathroom Renovation with Walk-In Shower on Wooster Street",
+  "title": "SoHo, Manhattan: Apartment Renovation on Wooster Street",
   "photos": [
    "drive_1yEUylQHa_GkPbjrJvaWuNr1IOSzhxsw9.webp",
    "drive_13-01QVhgm0O0grlRwNz8esVtYkT4aJUY.webp",
    "drive_1z1AK7IZVI0o9SpVN9_8xdJOlov4Sk7sj.webp",
    "drive_1r4M5wd9OHo6uCHuT3k6Wfyk8OrCKPCON.webp",
-   "drive_15qoLUq1BpNhN-FCVufsbjdhtwKpgS0a8.webp"
+   "drive_15qoLUq1BpNhN-FCVufsbjdhtwKpgS0a8.webp",
+   "drive_17HzGk7URLeSZUNI_RZhvVxdaZUZS2EtT.webp",
+   "drive_1b4fLfhePZOQhDZofa7bWJ12Bie-YhF4z.webp",
+   "drive_1PrZFeYDKm--aVi5Xc4mLNO0cBghuEusW.webp",
+   "drive_1BnAykytErp6dgKIf3wB0eBKD2VWoagLJ.webp",
+   "drive_1JhAHdVm8NudTkdDaQeBH8fyn8wB2AG2M.webp",
+   "drive_1W2epN3eJuGBHalM44FdN6HPALYtv-2xG.webp",
+   "drive_1xVDVHp66wN_1upOVnrhLghWTCQzTscCn.webp"
   ],
   "orig_titles": [
    "Modern Bathroom Renovation",
    "Modern Bathroom Renovation",
    "Modern Bathroom Renovation",
    "Master Bathroom Renovation",
-   "Modern Bathroom Renovation with Walk-In Shower"
+   "Modern Bathroom Renovation with Walk-In Shower",
+   "Modern Kitchen with Marble Waterfall Island",
+   "Custom Drywall and Built-In Shelving Installation",
+   "Custom Kitchen Cabinetry Installation",
+   "Modern Interior Renovation with Wood Accent Wall",
+   "Modern Apartment Interior Renovation",
+   "Modern Window Installation with Trim",
+   "Drywall Installation and Electrical Rough-In"
   ]
  },
  {
@@ -136,58 +150,20 @@
   ]
  },
  {
-  "slug": "modern-kitchen-marble-waterfall-island",
-  "title": "Modern Kitchen with Marble Waterfall Island",
-  "photos": [
-   "drive_17HzGk7URLeSZUNI_RZhvVxdaZUZS2EtT.webp"
-  ],
-  "orig_titles": [
-   "Modern Bathroom Renovation"
-  ]
- },
- {
-  "slug": "modern-apartment-interior-renovation",
-  "title": "Modern Apartment Interior Renovation",
-  "photos": [
-   "drive_1BnAykytErp6dgKIf3wB0eBKD2VWoagLJ.webp",
-   "drive_1JhAHdVm8NudTkdDaQeBH8fyn8wB2AG2M.webp",
-   "drive_1W2epN3eJuGBHalM44FdN6HPALYtv-2xG.webp"
-  ],
-  "orig_titles": [
-   "Modern Interior Renovation with Wood Accent Wall",
-   "Modern Apartment Interior Renovation",
-   "Modern Window Installation with Trim"
-  ]
- },
- {
-  "slug": "custom-drywall-and-built-in-shelving",
-  "title": "Custom Drywall and Built-In Shelving Installation",
-  "photos": [
-   "drive_1b4fLfhePZOQhDZofa7bWJ12Bie-YhF4z.webp",
-   "drive_1PrZFeYDKm--aVi5Xc4mLNO0cBghuEusW.webp"
-  ],
-  "orig_titles": [
-   "Custom Drywall and Built-In Shelving Installation",
-   "Custom Kitchen Cabinetry Installation"
-  ]
- },
- {
-  "slug": "drywall-installation-and-framing",
-  "title": "Drywall Installation and Framing",
+  "slug": "chelsea-manhattan-bathroom-renovation",
+  "title": "Chelsea, Manhattan: Bathroom Renovation (Framing and Cement Board)",
   "photos": [
    "drive_1cDKxWhDkbSQDjTTobl8njZEZF3kRupoh.webp",
-   "drive_1KIJgh03mUitMOjFRTR9sTVxyZfYZGDBf.webp",
-   "drive_1xVDVHp66wN_1upOVnrhLghWTCQzTscCn.webp"
+   "drive_1KIJgh03mUitMOjFRTR9sTVxyZfYZGDBf.webp"
   ],
   "orig_titles": [
    "Drywall Installation and Ceiling Framing",
-   "Drywall Installation and Finishing",
-   "Drywall Installation and Electrical Rough-In"
+   "Drywall Installation and Finishing"
   ]
  },
  {
-  "slug": "custom-window-seat-with-built-in-radiator-cover",
-  "title": "Custom Window Seat with Built-in Radiator Cover",
+  "slug": "chelsea-manhattan-window-seat-radiator-cover",
+  "title": "Chelsea, Manhattan: Window Seat with Built-In Radiator Cover",
   "photos": [
    "drive_1ivR2CkD4-N6THyx3zFeu0hzzyqrE7IVq.webp"
   ],
@@ -196,18 +172,18 @@
   ]
  },
  {
-  "slug": "garage-door-installation",
-  "title": "Garage Door Installation",
+  "slug": "chelsea-manhattan-double-closet-doors",
+  "title": "Chelsea, Manhattan: Double Closet Door Installation",
   "photos": [
    "drive_1mrTmaC_zTrFAw7Ej3Y9pexpkmgaujWye.webp"
   ],
   "orig_titles": [
-   "Garage Door Installation"
+   "Double Closet Door Installation"
   ]
  },
  {
-  "slug": "modern-kitchen-renovation",
-  "title": "Modern Kitchen Renovation",
+  "slug": "hells-kitchen-manhattan-modern-kitchen-renovation",
+  "title": "Hell's Kitchen, Manhattan: Modern Kitchen Renovation",
   "photos": [
    "drive_1ljl2yzHiZW1qX4F5XD9Y--q_eGMN3jSq.webp"
   ],
@@ -216,8 +192,8 @@
   ]
  },
  {
-  "slug": "contemporary-kitchen-renovation-with-custom-cabinetry",
-  "title": "Contemporary Kitchen Renovation with Custom Cabinetry",
+  "slug": "upper-west-side-contemporary-kitchen-custom-cabinetry",
+  "title": "Upper West Side, Manhattan: Contemporary Kitchen with Custom Cabinetry",
   "photos": [
    "drive_1OuMNo5OrZjkSfPs9jxCa3vX2uHsYiez1.webp"
   ],
@@ -226,8 +202,8 @@
   ]
  },
  {
-  "slug": "modern-kitchen-renovation-with-custom-cabinetry",
-  "title": "Modern Kitchen Renovation with Custom Cabinetry",
+  "slug": "lindenhurst-ny-modern-kitchen-custom-cabinetry",
+  "title": "Lindenhurst, NY: Modern Kitchen Renovation with Custom Cabinetry",
   "photos": [
    "drive_1iv0mlgPuuI4bkfp6TU2wipEvNB-w-Br2.webp"
   ],

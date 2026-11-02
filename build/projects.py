@@ -16,16 +16,19 @@ PH[29]['alt']='Modern kitchen with white cabinets, marble waterfall island, and 
 GROUPS=[
  ('west-village-marble-kitchen-bathroom-renovation','West Village, Manhattan: Marble Kitchen and Bathroom Renovation',[1,7,15,42,43,46,8,10,17,5,13,3,16]),
  ('upper-west-side-west-end-avenue-kitchen-renovation','Upper West Side, Manhattan: White Kitchen Renovation on West End Avenue',[0,6,12]),
- ('kitchen-cabinetry-and-backsplash-installation','Kitchen Cabinetry and Backsplash Installation',[41,11,18,27]),
- ('green-kitchen-cabinetry-installation','Custom Kitchen Cabinetry Installation (Green Cabinets)',[31,33,23,26]),
- ('blue-kitchen-remodel-custom-cabinetry','Modern Kitchen Remodel with Custom Cabinetry (Blue Cabinets)',[49,45,48]),
- ('soho-manhattan-bathroom-walk-in-shower','SoHo, Manhattan: Bathroom Renovation with Walk-In Shower on Wooster Street',[38,35,28,34,37]),
+ ('chelsea-manhattan-kitchen-cabinetry-backsplash','Chelsea, Manhattan: Kitchen Cabinetry and Backsplash Installation',[41,11,18,27]),
+ ('chelsea-manhattan-green-kitchen-cabinetry','Chelsea, Manhattan: Custom Kitchen Cabinetry Installation (Green Cabinets)',[31,33,23,26]),
+ ('manhattan-blue-kitchen-custom-cabinetry','Manhattan: Modern Kitchen Remodel with Custom Cabinetry (Blue Cabinets)',[49,45,48]),
+ # owner (Nov 2, 2026): the waterfall-island kitchen, interiors, built-ins and finished walls are the same Wooster Street, SoHo job
+ ('soho-manhattan-bathroom-walk-in-shower','SoHo, Manhattan: Apartment Renovation on Wooster Street',[38,35,28,34,37,29,32,25,14,19,24,40]),
  ('90th-street-manhattan-bathroom-tile-renovation','90th Street, Manhattan: Master Bathroom Tile Renovation',[9,20,21]),
  ('astoria-queens-bathroom-renovation','Astoria, Queens: Complete Bathroom Renovation',[36]),
- ('modern-kitchen-marble-waterfall-island','Modern Kitchen with Marble Waterfall Island',[29]),
- ('modern-apartment-interior-renovation','Modern Apartment Interior Renovation',[14,19,24]),
- ('custom-drywall-and-built-in-shelving','Custom Drywall and Built-In Shelving Installation',[32,25]),
- ('drywall-installation-and-framing','Drywall Installation and Framing',[2,4,40]),
+ ('chelsea-manhattan-bathroom-renovation','Chelsea, Manhattan: Bathroom Renovation (Framing and Cement Board)',[2,4]),
+ ('chelsea-manhattan-window-seat-radiator-cover','Chelsea, Manhattan: Window Seat with Built-In Radiator Cover',[22]),
+ ('chelsea-manhattan-double-closet-doors','Chelsea, Manhattan: Double Closet Door Installation',[30]),
+ ('hells-kitchen-manhattan-modern-kitchen-renovation',"Hell's Kitchen, Manhattan: Modern Kitchen Renovation",[39]),
+ ('upper-west-side-contemporary-kitchen-custom-cabinetry','Upper West Side, Manhattan: Contemporary Kitchen with Custom Cabinetry',[44]),
+ ('lindenhurst-ny-modern-kitchen-custom-cabinetry','Lindenhurst, NY: Modern Kitchen Renovation with Custom Cabinetry',[47]),
 ]
 used={i for _,_,ids in GROUPS for i in ids}
 def slugify(t): return re.sub(r'[^a-z0-9]+','-',t.lower()).strip('-')
@@ -43,14 +46,38 @@ WV='west-village-marble-kitchen-bathroom-renovation'
 UWS='upper-west-side-west-end-avenue-kitchen-renovation'
 # owner-confirmed locations (Nov 2, 2026); street numbers intentionally not published
 SOHO='soho-manhattan-bathroom-walk-in-shower'; E90='90th-street-manhattan-bathroom-tile-renovation'; AST='astoria-queens-bathroom-renovation'
-LOC={WV:'West Village, Manhattan',UWS:'Upper West Side, Manhattan',SOHO:'SoHo, Manhattan',E90:'90th Street, Manhattan',AST:'Astoria, Queens'}
-PLACE={WV:'West Village, Manhattan',UWS:'West End Avenue, Upper West Side, Manhattan',SOHO:'Wooster Street, SoHo, Manhattan',E90:'90th Street, Manhattan',AST:'Astoria, Queens'}
-WHERE={WV:'in the West Village, Manhattan',UWS:'on West End Avenue, Upper West Side, Manhattan',SOHO:'on Wooster Street in SoHo, Manhattan',E90:'on 90th Street, Manhattan',AST:'in Astoria, Queens'}
-DESC={WV:'walnut and white kitchen cabinetry, marble slab counters and a marble slab bathroom',UWS:'white cabinetry with glass-front upper doors, black countertops and pendant lights',SOHO:'large-format beige tile, a glass walk-in shower and a wall-hung sink',E90:'ribbed green-gray wall tile and a shower with built-in niches',AST:'white subway tile, a bathtub with shower and a wood vanity'}
+CH_A='chelsea-manhattan-kitchen-cabinetry-backsplash'; CH_B='chelsea-manhattan-green-kitchen-cabinetry'; MAN_C='manhattan-blue-kitchen-custom-cabinetry'
+CH_G='chelsea-manhattan-bathroom-renovation'; CH_H='chelsea-manhattan-window-seat-radiator-cover'; CH_I='chelsea-manhattan-double-closet-doors'
+HK='hells-kitchen-manhattan-modern-kitchen-renovation'; UWS_K='upper-west-side-contemporary-kitchen-custom-cabinetry'; LIN='lindenhurst-ny-modern-kitchen-custom-cabinetry'
+LOC={WV:'West Village, Manhattan',UWS:'Upper West Side, Manhattan',SOHO:'SoHo, Manhattan',E90:'90th Street, Manhattan',AST:'Astoria, Queens',
+     CH_A:'Chelsea, Manhattan',CH_B:'Chelsea, Manhattan',MAN_C:'Manhattan, NY',CH_G:'Chelsea, Manhattan',CH_H:'Chelsea, Manhattan',CH_I:'Chelsea, Manhattan',
+     HK:"Hell's Kitchen, Manhattan",UWS_K:'Upper West Side, Manhattan',LIN:'Lindenhurst, NY'}
+PLACE=dict(LOC); PLACE.update({UWS:'West End Avenue, Upper West Side, Manhattan',SOHO:'Wooster Street, SoHo, Manhattan'})
+LOCALITY={k:('Queens' if k==AST else 'Lindenhurst' if k==LIN else 'New York') for k in LOC}
+WHERE={WV:'in the West Village, Manhattan',UWS:'on West End Avenue, Upper West Side, Manhattan',SOHO:'on Wooster Street in SoHo, Manhattan',E90:'on 90th Street, Manhattan',AST:'in Astoria, Queens',
+       CH_A:'in Chelsea, Manhattan',CH_B:'in Chelsea, Manhattan',MAN_C:'in Manhattan',CH_G:'in Chelsea, Manhattan',CH_H:'in Chelsea, Manhattan',CH_I:'in Chelsea, Manhattan',
+       HK:"in Hell's Kitchen, Manhattan",UWS_K:'on the Upper West Side, Manhattan',LIN:'in Lindenhurst, NY'}
+DESC={WV:'walnut and white kitchen cabinetry, marble slab counters and a marble slab bathroom',UWS:'white cabinetry with glass-front upper doors, black countertops and pendant lights',
+      SOHO:'a bathroom with large-format tile, a glass walk-in shower and a freestanding tub, a kitchen with a marble waterfall island, built-in shelving and closets, and light wood floors',
+      E90:'ribbed green-gray wall tile and a shower with built-in niches',AST:'white subway tile, a bathtub with shower and a wood vanity',
+      CH_A:'kitchen cabinetry and a new backsplash',CH_B:'green custom kitchen cabinetry',MAN_C:'blue custom cabinetry and a stone backsplash',
+      CH_G:'a bathroom during construction, with new framing, drywall and cement board for the shower',CH_H:'a painted window seat with a built-in radiator cover',
+      CH_I:'white double closet doors with recessed panels',HK:'white cabinets, marble counters and stainless steel appliances',
+      UWS_K:'cream custom cabinetry, white counters, a gas range and brass fixtures',LIN:'white cabinets, a marble island, stainless steel appliances and pendant lights'}
+# accurate alts / titles for photos whose original captions were wrong
+PH[4]['alt']='Shower walls in cement board with a recessed niche opening, during a bathroom renovation'
+PH[25]['alt']='White built-in shelving and closets in a hallway, with a view into the bathroom'
+PH[30]['alt']='White double closet doors with recessed panels and chrome handles'; PH[30]['title']='Double Closet Door Installation'
+PH[29]['title']='Modern Kitchen with Marble Waterfall Island'
+OLD_ALT={i:html.unescape(c[2]) for i,c in enumerate(cards)}; OLD_T={i:html.unescape(c[0]) for i,c in enumerate(cards)}
 LOCFILE={PH[i]['file']:LOC[g[0]] for g in GROUPS if g[0] in LOC for i in g[2]}
 WV_FILES=set(LOCFILE)
+FILEIDX={p['file']:i for i,p in enumerate(PH)}
 for i,p in enumerate(PH):
     if p['file'] in LOCFILE: p['alt']=p['alt']+', '+LOCFILE[p['file']]
+PHALT={p['file']:p['alt'] for p in PH}
+# old wrong captions anywhere else (e.g. JSON-LD captions, figcaptions)
+ALT_FIX={OLD_ALT[i]:PH[i]['alt'] for i in (4,25,30)}
 # thumbnails (640px wide) for gallery grids
 os.makedirs(OUT+'/images/projects/thumbs',exist_ok=True)
 DIM={}
@@ -90,7 +117,7 @@ def page(sl,title,ids):
     hero=(f'<section class="bg-dark-bg relative overflow-hidden py-[clamp(3.5rem,_7vw,_6rem)]" aria-label="Project header"><div class="container-site relative z-10">'
           f'<nav aria-label="Breadcrumb" class="flex items-center flex-wrap gap-x-2 gap-y-1 text-[0.8125rem] mb-6"><a href="/" class="text-text-on-dark-dim hover:text-accent-light no-underline">Home</a> {CHEV} <a href="/projects/" class="text-text-on-dark-dim hover:text-accent-light no-underline">Projects</a> {CHEV} <span aria-current="page" class="text-text-on-dark-muted">{esc(title)}</span></nav>'
           f'<span class="section-label section-label-dark">General Contractor</span><h1 class="text-[clamp(1.75rem,_4vw,_2.75rem)] font-bold text-text-on-dark leading-[1.15] mb-3">{esc(title)}</h1>'
-          f'<p class="flex items-center gap-1.5 text-sm text-text-on-dark-muted mb-4">{PIN} {LOC.get(sl,'Lynbrook, NY')} · {n} photo{"s" if n>1 else ""}</p>'
+          f'<p class="flex items-center gap-1.5 text-sm text-text-on-dark-muted mb-4">{PIN} {LOC.get(sl,'New York')} · {n} photo{"s" if n>1 else ""}</p>'
           f'<p class="text-[1.0625rem] text-text-on-dark leading-[1.65] max-w-[60ch] mb-6">Photos from this Trimoco LLC project. Tap any photo to enlarge it, then swipe or use the arrow keys to browse.</p>'
           f'<div class="flex gap-3 flex-wrap"><button type="button" data-open-quote-modal class="btn-primary py-3 px-6 text-sm">Get a Free Estimate</button><a href="tel:+15167871045" class="btn-ghost py-3 px-5 text-sm">(516) 787-1045</a></div></div></section>')
     gal=(f'<section class="section-pad" aria-label="Project photos"><div class="container-site"><div class="pg-grid">{items}</div>'
@@ -112,12 +139,15 @@ def page(sl,title,ids):
             d['itemListElement']=[{"@type":"ListItem","position":1,"name":"Home","item":BASE+"/"},{"@type":"ListItem","position":2,"name":"Projects","item":BASE+"/projects/"},{"@type":"ListItem","position":3,"name":title,"item":url}]
         return '<script type="application/ld+json">'+json.dumps(d,ensure_ascii=False)+'</script>'
     s=re.sub(r'<script type="application/ld\+json">(.*?)</script>',ld,s,flags=re.S)
-    gallery_ld={"@context":"https://schema.org","@type":"ImageGallery","name":title,"url":url,"description":desc,"author":{"@id":BASE+"/#business"},**({"contentLocation":{"@type":"Place","name":PLACE.get(sl,""),"address":{"@type":"PostalAddress","addressLocality":("Queens" if sl==AST else "New York"),"addressRegion":"NY","addressCountry":"US"}}} if sl in LOC else {}),
+    gallery_ld={"@context":"https://schema.org","@type":"ImageGallery","name":title,"url":url,"description":desc,"author":{"@id":BASE+"/#business"},**({"contentLocation":{"@type":"Place","name":PLACE.get(sl,""),"address":{"@type":"PostalAddress","addressLocality":LOCALITY.get(sl,"New York"),"addressRegion":"NY","addressCountry":"US"}}} if sl in LOC else {}),
                 "image":[{"@type":"ImageObject","contentUrl":BASE+'/images/projects/'+PH[i]['file'],"caption":PH[i]['alt']} for i in ids]}
     s=s.replace('</head>',CSS+'<script type="application/ld+json">'+json.dumps(gallery_ld,ensure_ascii=False)+'</script><script src="/js/gallery.js" defer></script></head>',1)
     os.makedirs(f'{OUT}/projects/{sl}',exist_ok=True); open(f'{OUT}/projects/{sl}/index.html','w').write(s)
 
 for g in GROUPS: page(*g)
+import shutil
+for d in glob.glob(OUT+'/projects/*/'):
+    if os.path.basename(d.rstrip('/')) not in {g[0] for g in GROUPS}: shutil.rmtree(d)  # old slugs are 301-redirected (render.yaml)
 
 # make every project photo elsewhere on the site link to its project page
 def linkify(s):
@@ -137,14 +167,18 @@ for f in glob.glob(OUT+'/**/*.html',recursive=True):
     s=re.sub(r'(src="/images/projects/(?:thumbs/)?'+re.escape(PH[29]['file'])+r'"[^>]*?alt=")[^"]*"',lambda m:m.group(1)+PH[29]['alt']+'"',s)
     s=re.sub(r'(<img [^>]*src="/images/projects/'+re.escape(PH[29]['file'])+r'"[^>]*?) title="[^"]*"',r'\1',s)
     for f0 in WV_FILES:
-        lab=LOCFILE[f0]
-        s=re.sub(r'(src="/images/projects/(?:thumbs/)?'+re.escape(f0)+r'"[^>]*?alt=")([^"]*)"',lambda m: m.group(1)+(m.group(2) if lab in m.group(2) else m.group(2)+', '+lab)+'"',s)
+        lab=LOCFILE[f0]; full=PHALT[f0]
+        s=re.sub(r'(src="/images/projects/(?:thumbs/)?'+re.escape(f0)+r'"[^>]*?alt=")([^"]*)"',lambda m: m.group(1)+esc(full)+'"',s)
         s=re.sub(r'(<img [^>]*src="/images/projects/'+re.escape(f0)+r'"[^>]*?) title="[^"]*"',r'\1',s)
     def cardloc(m):
         blk=m.group(0)
         hit=[f0 for f0 in LOCFILE if f0 in blk]
-        return blk.replace('Lynbrook, NY',LOCFILE[hit[0]]) if hit else blk
+        if not hit: return blk
+        i=FILEIDX[hit[0]]
+        if OLD_T[i]!=PH[i]['title']: blk=blk.replace(esc(OLD_T[i]),esc(PH[i]['title'])).replace(OLD_T[i],PH[i]['title'])
+        return blk.replace('Lynbrook, NY',LOCFILE[hit[0]])
     s=re.sub(r'<article\b.*?</article>',cardloc,s,flags=re.S)
+    for o_,n_ in ALT_FIX.items(): s=s.replace(esc(o_),esc(n_)).replace(o_,n_)
     s=linkify(s)
     s=s.replace('<figure class="mb-8 overflow-hidden','<figure class="relative mb-8 overflow-hidden')
     s=s.replace('</head>',CSS[:7]+re.search(r'\.proj-link\{.*?(?=</style>)',CSS,re.S).group(0)+'</style></head>',1)
@@ -152,7 +186,7 @@ for f in glob.glob(OUT+'/**/*.html',recursive=True):
 # feature the West Village project on Manhattan + co-op/condo pages
 FEAT={WV:dict(pick=[0,4,6,1],h2='Marble kitchen and bathroom in the West Village',hid='wv-heading',
    p='A kitchen and bathroom renovation by Trimoco LLC in the West Village, Manhattan: walnut and white kitchen cabinetry with marble slab counters, and a bathroom finished in marble slabs.'),
- SOHO:dict(pick=[0,1,2],h2='Walk-in shower bathroom on Wooster Street, SoHo',hid='soho-heading',p=''),
+ SOHO:dict(pick=[0,1,2],h2='Apartment renovation on Wooster Street, SoHo',hid='soho-heading',p=''),
  E90:dict(pick=[0,1,2],h2='Tiled bathroom on 90th Street',hid='e90-heading',p=''),
  AST:dict(pick=[0],h2='Bathroom renovation in Astoria',hid='ast-heading',p=''),
  UWS:dict(pick=[0,1,2],h2='White kitchen on West End Avenue, Upper West Side',hid='uws-heading',
@@ -174,13 +208,13 @@ def project_cards(keys,label,h2,intro):
         cards+=(f'<a href="/projects/{key}/" class="flex flex-col no-underline group"><div class="relative rounded-xl overflow-hidden aspect-[4/5]">{img}<span class="proj-badge">{n} photo{"s" if n>1 else ""}</span></div>'
                 f'<p class="text-xs font-semibold uppercase tracking-[0.08em] text-accent mt-3 mb-1">{esc(LOC[key])}</p><h3 class="text-[1.0625rem] font-bold text-text m-0 group-hover:text-accent">{esc(g[1].split(": ",1)[-1])}</h3>'
                 f'<p class="text-sm text-text-secondary mt-1 mb-0">{esc(DESC[key][0].upper()+DESC[key][1:])}.</p></a>')
-    cols=min(len(keys),4)
+    cols=3 if len(keys)%3==0 and len(keys)>3 else min(len(keys),4)
     return (f'<!-- ─── REAL LOCAL PROJECTS (owner-confirmed locations) ─── --><section class="section-pad" aria-labelledby="local-projects-heading"><div class="container-site">'
             f'<span class="section-label">{esc(label)}</span><h2 id="local-projects-heading" class="font-heading text-[clamp(1.75rem,_4vw,_2.5rem)] font-bold mb-3">{esc(h2)}</h2><span class="accent-bar"></span>'
             f'<p class="text-base text-text-secondary leading-[1.75] max-w-[65ch] mt-6 mb-8">{esc(intro)}</p>'
             f'<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-{cols} gap-6 mb-8">{cards}</div>'
             f'<div class="flex gap-3 flex-wrap"><button type="button" data-open-quote-modal class="btn-primary">Get a Free Estimate</button><a href="/projects/" class="btn-ghost">All projects</a></div></div></section> ')
-PLACEMENTS=[('areas/manhattan-ny/index.html', lambda: project_cards([WV,UWS,SOHO,E90],'Recent Manhattan Projects','Our recent work in Manhattan','Kitchens and bathrooms Trimoco LLC has renovated in Manhattan. Tap a project to see all of its photos.')),
+PLACEMENTS=[('areas/manhattan-ny/index.html', lambda: project_cards([WV,SOHO,UWS,CH_B,E90,MAN_C],'Recent Manhattan Projects','Our recent work in Manhattan','Kitchens and bathrooms Trimoco LLC has renovated in Manhattan. Tap a project to see all of its photos.')),
             ('services/general-contractor/co-op-condo-renovation/index.html', lambda: featured(WV)),
             ('areas/queens-ny/index.html', lambda: project_cards([AST],'Recent Queens Project','Our recent work in Queens','A bathroom Trimoco LLC renovated in Astoria, Queens. Tap the photo to see the project page.'))]
 for rel,fn in PLACEMENTS:

@@ -25,8 +25,8 @@ services:
       - {type: redirect, source: /projects/modern-kitchen-and-dining-renovation, destination: /projects/upper-west-side-west-end-avenue-kitchen-renovation/}
       - {type: redirect, source: /projects/complete-bathroom-renovation/*, destination: /projects/astoria-queens-bathroom-renovation/}
       - {type: redirect, source: /projects/complete-bathroom-renovation, destination: /projects/astoria-queens-bathroom-renovation/}
-      - {type: redirect, source: /projects/modern-bathroom-renovation/*, destination: /projects/modern-kitchen-marble-waterfall-island/}
-      - {type: redirect, source: /projects/modern-bathroom-renovation, destination: /projects/modern-kitchen-marble-waterfall-island/}
+      - {type: redirect, source: /projects/modern-bathroom-renovation/*, destination: /projects/soho-manhattan-bathroom-walk-in-shower/}
+      - {type: redirect, source: /projects/modern-bathroom-renovation, destination: /projects/soho-manhattan-bathroom-walk-in-shower/}
       - {type: redirect, source: /projects/bathroom-renovation-walk-in-shower/*, destination: /projects/soho-manhattan-bathroom-walk-in-shower/}
       - {type: redirect, source: /projects/bathroom-renovation-walk-in-shower, destination: /projects/soho-manhattan-bathroom-walk-in-shower/}
       - {type: redirect, source: /projects/master-bathroom-tile-renovation/*, destination: /projects/90th-street-manhattan-bathroom-tile-renovation/}
@@ -35,3 +35,27 @@ services:
       - {type: redirect, source: /areas/east-hamptons-ny, destination: /areas/east-hampton/}
       - {type: redirect, source: /areas/west-hamptons-ny/*, destination: /areas/westhampton/}
       - {type: redirect, source: /areas/west-hamptons-ny, destination: /areas/westhampton/}
+      - {type: redirect, source: /projects/kitchen-cabinetry-and-backsplash-installation/*, destination: /projects/chelsea-manhattan-kitchen-cabinetry-backsplash/}
+      - {type: redirect, source: /projects/kitchen-cabinetry-and-backsplash-installation, destination: /projects/chelsea-manhattan-kitchen-cabinetry-backsplash/}
+      - {type: redirect, source: /projects/green-kitchen-cabinetry-installation/*, destination: /projects/chelsea-manhattan-green-kitchen-cabinetry/}
+      - {type: redirect, source: /projects/green-kitchen-cabinetry-installation, destination: /projects/chelsea-manhattan-green-kitchen-cabinetry/}
+      - {type: redirect, source: /projects/blue-kitchen-remodel-custom-cabinetry/*, destination: /projects/manhattan-blue-kitchen-custom-cabinetry/}
+      - {type: redirect, source: /projects/blue-kitchen-remodel-custom-cabinetry, destination: /projects/manhattan-blue-kitchen-custom-cabinetry/}
+      - {type: redirect, source: /projects/modern-kitchen-marble-waterfall-island/*, destination: /projects/soho-manhattan-bathroom-walk-in-shower/}
+      - {type: redirect, source: /projects/modern-kitchen-marble-waterfall-island, destination: /projects/soho-manhattan-bathroom-walk-in-shower/}
+      - {type: redirect, source: /projects/modern-apartment-interior-renovation/*, destination: /projects/soho-manhattan-bathroom-walk-in-shower/}
+      - {type: redirect, source: /projects/modern-apartment-interior-renovation, destination: /projects/soho-manhattan-bathroom-walk-in-shower/}
+      - {type: redirect, source: /projects/custom-drywall-and-built-in-shelving/*, destination: /projects/soho-manhattan-bathroom-walk-in-shower/}
+      - {type: redirect, source: /projects/custom-drywall-and-built-in-shelving, destination: /projects/soho-manhattan-bathroom-walk-in-shower/}
+      - {type: redirect, source: /projects/drywall-installation-and-framing/*, destination: /projects/chelsea-manhattan-bathroom-renovation/}
+      - {type: redirect, source: /projects/drywall-installation-and-framing, destination: /projects/chelsea-manhattan-bathroom-renovation/}
+      - {type: redirect, source: /projects/custom-window-seat-with-built-in-radiator-cover/*, destination: /projects/chelsea-manhattan-window-seat-radiator-cover/}
+      - {type: redirect, source: /projects/custom-window-seat-with-built-in-radiator-cover, destination: /projects/chelsea-manhattan-window-seat-radiator-cover/}
+      - {type: redirect, source: /projects/garage-door-installation/*, destination: /projects/chelsea-manhattan-double-closet-doors/}
+      - {type: redirect, source: /projects/garage-door-installation, destination: /projects/chelsea-manhattan-double-closet-doors/}
+      - {type: redirect, source: /projects/modern-kitchen-renovation/*, destination: /projects/hells-kitchen-manhattan-modern-kitchen-renovation/}
+      - {type: redirect, source: /projects/modern-kitchen-renovation, destination: /projects/hells-kitchen-manhattan-modern-kitchen-renovation/}
+      - {type: redirect, source: /projects/contemporary-kitchen-renovation-with-custom-cabinetry/*, destination: /projects/upper-west-side-contemporary-kitchen-custom-cabinetry/}
+      - {type: redirect, source: /projects/contemporary-kitchen-renovation-with-custom-cabinetry, destination: /projects/upper-west-side-contemporary-kitchen-custom-cabinetry/}
+      - {type: redirect, source: /projects/modern-kitchen-renovation-with-custom-cabinetry/*, destination: /projects/lindenhurst-ny-modern-kitchen-custom-cabinetry/}
+      - {type: redirect, source: /projects/modern-kitchen-renovation-with-custom-cabinetry, destination: /projects/lindenhurst-ny-modern-kitchen-custom-cabinetry/}

@@ -16,13 +16,13 @@ SVC = {
  'fixture':  ('/services/plumber/fixture-replacement/','Plumbing Fixtures'),
 }
 
-GALLERIES = [  # real projects, labelled with their real locations
+GALLERIES = [  # real projects, labelled with their real (owner-confirmed) locations
  ('west-village-marble-kitchen-bathroom-renovation','Marble kitchen and bathroom','West Village, Manhattan'),
+ ('soho-manhattan-bathroom-walk-in-shower','Apartment renovation: bath, kitchen and built-ins','SoHo, Manhattan'),
  ('upper-west-side-west-end-avenue-kitchen-renovation','White kitchen with glass-front cabinets','Upper West Side, Manhattan'),
- ('soho-manhattan-bathroom-walk-in-shower','Bathroom with walk-in shower','SoHo, Manhattan'),
+ ('chelsea-manhattan-green-kitchen-cabinetry','Green kitchen cabinetry','Chelsea, Manhattan'),
  ('90th-street-manhattan-bathroom-tile-renovation','Tiled bathroom','90th Street, Manhattan'),
- ('green-kitchen-cabinetry-installation','Green kitchen cabinetry',None),
- ('custom-drywall-and-built-in-shelving','Built-in shelving',None),
+ ('lindenhurst-ny-modern-kitchen-custom-cabinetry','Kitchen with marble island','Lindenhurst, NY'),
 ]
 
 PAGES = {
