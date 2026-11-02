@@ -8,6 +8,8 @@ orig=open(SRC+'/projects/index.html').read()
 cards=re.findall(r'<article class="project-card"[^>]*aria-label="([^"]*)".*?<img src="/images/projects/(drive_[^"]*)" alt="([^"]*)".*?</article>',orig,re.S)
 PH=[{'file':f,'title':html.unescape(t),'alt':html.unescape(a)} for t,f,a in cards]   # index = order on original /projects page
 assert len(PH)==50
+assert PH[29]['file'].startswith('drive_17HzGk') and PH[36]['file'].startswith('drive_1tH6Sc')
+PH[29]['alt']='Modern kitchen with white cabinets, marble waterfall island, and stainless steel refrigerator'  # original alt wrongly described a bathroom
 
 # Best-guess grouping by what is visible in the photos (same cabinets, stone, floors, windows, tile).
 # Titles are taken from the original site's own card titles. Owner should confirm.
@@ -17,8 +19,10 @@ GROUPS=[
  ('kitchen-cabinetry-and-backsplash-installation','Kitchen Cabinetry and Backsplash Installation',[41,11,18,27]),
  ('green-kitchen-cabinetry-installation','Custom Kitchen Cabinetry Installation (Green Cabinets)',[31,33,23,26]),
  ('blue-kitchen-remodel-custom-cabinetry','Modern Kitchen Remodel with Custom Cabinetry (Blue Cabinets)',[49,45,48]),
- ('bathroom-renovation-walk-in-shower','Modern Bathroom Renovation with Walk-In Shower',[38,35,28,34,37]),
- ('master-bathroom-tile-renovation','Master Bathroom Tile Renovation',[9,20,21]),
+ ('soho-manhattan-bathroom-walk-in-shower','SoHo, Manhattan: Bathroom Renovation with Walk-In Shower on Wooster Street',[38,35,28,34,37]),
+ ('90th-street-manhattan-bathroom-tile-renovation','90th Street, Manhattan: Master Bathroom Tile Renovation',[9,20,21]),
+ ('astoria-queens-bathroom-renovation','Astoria, Queens: Complete Bathroom Renovation',[36]),
+ ('modern-kitchen-marble-waterfall-island','Modern Kitchen with Marble Waterfall Island',[29]),
  ('modern-apartment-interior-renovation','Modern Apartment Interior Renovation',[14,19,24]),
  ('custom-drywall-and-built-in-shelving','Custom Drywall and Built-In Shelving Installation',[32,25]),
  ('drywall-installation-and-framing','Drywall Installation and Framing',[2,4,40]),
@@ -38,7 +42,11 @@ for sl,t,ids in GROUPS:
 WV='west-village-marble-kitchen-bathroom-renovation'
 UWS='upper-west-side-west-end-avenue-kitchen-renovation'
 # owner-confirmed locations (Nov 2, 2026); street numbers intentionally not published
-LOC={WV:'West Village, Manhattan',UWS:'Upper West Side, Manhattan'}
+SOHO='soho-manhattan-bathroom-walk-in-shower'; E90='90th-street-manhattan-bathroom-tile-renovation'; AST='astoria-queens-bathroom-renovation'
+LOC={WV:'West Village, Manhattan',UWS:'Upper West Side, Manhattan',SOHO:'SoHo, Manhattan',E90:'90th Street, Manhattan',AST:'Astoria, Queens'}
+PLACE={WV:'West Village, Manhattan',UWS:'West End Avenue, Upper West Side, Manhattan',SOHO:'Wooster Street, SoHo, Manhattan',E90:'90th Street, Manhattan',AST:'Astoria, Queens'}
+WHERE={WV:'in the West Village, Manhattan',UWS:'on West End Avenue, Upper West Side, Manhattan',SOHO:'on Wooster Street in SoHo, Manhattan',E90:'on 90th Street, Manhattan',AST:'in Astoria, Queens'}
+DESC={WV:'walnut and white kitchen cabinetry, marble slab counters and a marble slab bathroom',UWS:'white cabinetry with glass-front upper doors, black countertops and pendant lights',SOHO:'large-format beige tile, a glass walk-in shower and a wall-hung sink',E90:'ribbed green-gray wall tile and a shower with built-in niches',AST:'white subway tile, a bathtub with shower and a wood vanity'}
 LOCFILE={PH[i]['file']:LOC[g[0]] for g in GROUPS if g[0] in LOC for i in g[2]}
 WV_FILES=set(LOCFILE)
 for i,p in enumerate(PH):
@@ -74,7 +82,7 @@ def cover(o):
 
 def page(sl,title,ids):
     url=f'{BASE}/projects/{sl}/'; n=len(ids)
-    desc=(f'{n} photos of a kitchen and bathroom renovation in the West Village, Manhattan, by Trimoco LLC: walnut and white kitchen cabinetry, marble slab counters and a marble slab bathroom.' if sl==WV else None) or (f'{n} photos of a kitchen renovation on West End Avenue, Upper West Side, Manhattan, by Trimoco LLC: white cabinetry with glass-front upper doors, black countertops and pendant lights.' if sl==UWS else None) or f'{n} photo{"s" if n>1 else ""} of {title.lower()} by Trimoco LLC, a licensed general contractor serving Manhattan, Brooklyn, Queens, the Bronx and Long Island.'
+    desc=(f'{n} photo{"s" if n>1 else ""} of a renovation {WHERE[sl]} by Trimoco LLC: {DESC[sl]}.' if sl in LOC else None) or f'{n} photo{"s" if n>1 else ""} of {title.lower()} by Trimoco LLC, a licensed general contractor serving Manhattan, Brooklyn, Queens, the Bronx and Long Island.'
     items=''.join(f'<figure class="m-0"><button type="button" class="pg-item" data-lb-index="{k}" aria-label="Enlarge photo {k+1} of {n}: {esc(PH[i]["alt"])}">{pic(PH[i]["file"],eager=k<3,alt=PH[i]["alt"])}</button><figcaption class="pg-cap">{esc(PH[i]["alt"])}</figcaption></figure>' for k,i in enumerate(ids))
     data=json.dumps([{'src':'/images/projects/'+PH[i]['file'],'alt':PH[i]['alt']} for i in ids])
     others=[g for g in GROUPS if g[0]!=sl and len(g[2])>1][:6]
@@ -104,7 +112,7 @@ def page(sl,title,ids):
             d['itemListElement']=[{"@type":"ListItem","position":1,"name":"Home","item":BASE+"/"},{"@type":"ListItem","position":2,"name":"Projects","item":BASE+"/projects/"},{"@type":"ListItem","position":3,"name":title,"item":url}]
         return '<script type="application/ld+json">'+json.dumps(d,ensure_ascii=False)+'</script>'
     s=re.sub(r'<script type="application/ld\+json">(.*?)</script>',ld,s,flags=re.S)
-    gallery_ld={"@context":"https://schema.org","@type":"ImageGallery","name":title,"url":url,"description":desc,"author":{"@id":BASE+"/#business"},**({"contentLocation":{"@type":"Place","name":("West End Avenue, Upper West Side, Manhattan" if sl==UWS else "West Village, Manhattan"),"address":{"@type":"PostalAddress","addressLocality":"New York","addressRegion":"NY","addressCountry":"US"}}} if sl in LOC else {}),
+    gallery_ld={"@context":"https://schema.org","@type":"ImageGallery","name":title,"url":url,"description":desc,"author":{"@id":BASE+"/#business"},**({"contentLocation":{"@type":"Place","name":PLACE.get(sl,""),"address":{"@type":"PostalAddress","addressLocality":("Queens" if sl==AST else "New York"),"addressRegion":"NY","addressCountry":"US"}}} if sl in LOC else {}),
                 "image":[{"@type":"ImageObject","contentUrl":BASE+'/images/projects/'+PH[i]['file'],"caption":PH[i]['alt']} for i in ids]}
     s=s.replace('</head>',CSS+'<script type="application/ld+json">'+json.dumps(gallery_ld,ensure_ascii=False)+'</script><script src="/js/gallery.js" defer></script></head>',1)
     os.makedirs(f'{OUT}/projects/{sl}',exist_ok=True); open(f'{OUT}/projects/{sl}/index.html','w').write(s)
@@ -126,6 +134,8 @@ for f in glob.glob(OUT+'/**/*.html',recursive=True):
     if re.match(r'projects/[^/]+/index\.html',rel) or rel=='404.html': continue
     s=open(f).read()
     if '/images/projects/drive_' not in s or 'proj-link' in s: continue
+    s=re.sub(r'(src="/images/projects/(?:thumbs/)?'+re.escape(PH[29]['file'])+r'"[^>]*?alt=")[^"]*"',lambda m:m.group(1)+PH[29]['alt']+'"',s)
+    s=re.sub(r'(<img [^>]*src="/images/projects/'+re.escape(PH[29]['file'])+r'"[^>]*?) title="[^"]*"',r'\1',s)
     for f0 in WV_FILES:
         lab=LOCFILE[f0]
         s=re.sub(r'(src="/images/projects/(?:thumbs/)?'+re.escape(f0)+r'"[^>]*?alt=")([^"]*)"',lambda m: m.group(1)+(m.group(2) if lab in m.group(2) else m.group(2)+', '+lab)+'"',s)
@@ -142,6 +152,9 @@ for f in glob.glob(OUT+'/**/*.html',recursive=True):
 # feature the West Village project on Manhattan + co-op/condo pages
 FEAT={WV:dict(pick=[0,4,6,1],h2='Marble kitchen and bathroom in the West Village',hid='wv-heading',
    p='A kitchen and bathroom renovation by Trimoco LLC in the West Village, Manhattan: walnut and white kitchen cabinetry with marble slab counters, and a bathroom finished in marble slabs.'),
+ SOHO:dict(pick=[0,1,2],h2='Walk-in shower bathroom on Wooster Street, SoHo',hid='soho-heading',p=''),
+ E90:dict(pick=[0,1,2],h2='Tiled bathroom on 90th Street',hid='e90-heading',p=''),
+ AST:dict(pick=[0],h2='Bathroom renovation in Astoria',hid='ast-heading',p=''),
  UWS:dict(pick=[0,1,2],h2='White kitchen on West End Avenue, Upper West Side',hid='uws-heading',
    p='A kitchen renovation by Trimoco LLC on West End Avenue in Manhattan\'s Upper West Side: white cabinetry with glass-front upper doors, black countertops and pendant lighting.')}
 def featured(key=WV):
@@ -153,11 +166,29 @@ def featured(key=WV):
       f'<p class="text-base text-text-secondary leading-[1.75] max-w-[65ch] mt-6 mb-8">{esc(F["p"])}</p>'
       f'<div class="grid grid-cols-2 lg:grid-cols-{len(pick)} gap-4 mb-8">{tiles}</div>'
       f'<div class="flex gap-3 flex-wrap"><a href="/projects/{key}/" class="btn-primary">See all {len(ids)} photos</a><button type="button" data-open-quote-modal class="btn-ghost">Get a Free Estimate</button></div></div></section> ')
-for rel,anchor in [('areas/manhattan-ny/index.html','<!-- ─── LOCAL GUIDE (added for SEO) ─── -->'),('services/general-contractor/co-op-condo-renovation/index.html',None)]:
+def project_cards(keys,label,h2,intro):
+    cards=''
+    for key in keys:
+        g=[x for x in GROUPS if x[0]==key][0]; i0=g[2][0]; n=len(g[2])
+        img=pic(PH[i0]['file'],alt=PH[i0]['alt']).replace('<img ','<img class="w-full h-full object-cover" ')
+        cards+=(f'<a href="/projects/{key}/" class="flex flex-col no-underline group"><div class="relative rounded-xl overflow-hidden aspect-[4/5]">{img}<span class="proj-badge">{n} photo{"s" if n>1 else ""}</span></div>'
+                f'<p class="text-xs font-semibold uppercase tracking-[0.08em] text-accent mt-3 mb-1">{esc(LOC[key])}</p><h3 class="text-[1.0625rem] font-bold text-text m-0 group-hover:text-accent">{esc(g[1].split(": ",1)[-1])}</h3>'
+                f'<p class="text-sm text-text-secondary mt-1 mb-0">{esc(DESC[key][0].upper()+DESC[key][1:])}.</p></a>')
+    cols=min(len(keys),4)
+    return (f'<!-- ─── REAL LOCAL PROJECTS (owner-confirmed locations) ─── --><section class="section-pad" aria-labelledby="local-projects-heading"><div class="container-site">'
+            f'<span class="section-label">{esc(label)}</span><h2 id="local-projects-heading" class="font-heading text-[clamp(1.75rem,_4vw,_2.5rem)] font-bold mb-3">{esc(h2)}</h2><span class="accent-bar"></span>'
+            f'<p class="text-base text-text-secondary leading-[1.75] max-w-[65ch] mt-6 mb-8">{esc(intro)}</p>'
+            f'<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-{cols} gap-6 mb-8">{cards}</div>'
+            f'<div class="flex gap-3 flex-wrap"><button type="button" data-open-quote-modal class="btn-primary">Get a Free Estimate</button><a href="/projects/" class="btn-ghost">All projects</a></div></div></section> ')
+PLACEMENTS=[('areas/manhattan-ny/index.html', lambda: project_cards([WV,UWS,SOHO,E90],'Recent Manhattan Projects','Our recent work in Manhattan','Kitchens and bathrooms Trimoco LLC has renovated in Manhattan. Tap a project to see all of its photos.')),
+            ('services/general-contractor/co-op-condo-renovation/index.html', lambda: featured(WV)),
+            ('areas/queens-ny/index.html', lambda: project_cards([AST],'Recent Queens Project','Our recent work in Queens','A bathroom Trimoco LLC renovated in Astoria, Queens. Tap the photo to see the project page.'))]
+for rel,fn in PLACEMENTS:
     f=OUT+'/'+rel; s=open(f).read()
-    if 'wv-heading' in s: continue
-    fx=featured()+(featured(UWS) if 'manhattan' in rel else '')
-    if anchor and anchor in s: s=s.replace(anchor,fx+anchor,1)
+    if 'owner-confirmed location' in s: continue
+    anchor='<!-- ─── LOCAL GUIDE (added for SEO) ─── -->'
+    fx=fn()
+    if anchor in s: s=s.replace(anchor,fx+anchor,1)
     else:
         k=s.index('id="faq"'); k=s.rfind('<section',0,k); s=s[:k]+fx+s[k:]
     open(f,'w').write(s)

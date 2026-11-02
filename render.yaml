@@ -23,3 +23,11 @@ services:
       - {type: redirect, source: /projects/kitchen-and-marble-bathroom-renovation, destination: /projects/west-village-marble-kitchen-bathroom-renovation/}
       - {type: redirect, source: /projects/modern-kitchen-and-dining-renovation/*, destination: /projects/upper-west-side-west-end-avenue-kitchen-renovation/}
       - {type: redirect, source: /projects/modern-kitchen-and-dining-renovation, destination: /projects/upper-west-side-west-end-avenue-kitchen-renovation/}
+      - {type: redirect, source: /projects/complete-bathroom-renovation/*, destination: /projects/astoria-queens-bathroom-renovation/}
+      - {type: redirect, source: /projects/complete-bathroom-renovation, destination: /projects/astoria-queens-bathroom-renovation/}
+      - {type: redirect, source: /projects/modern-bathroom-renovation/*, destination: /projects/modern-kitchen-marble-waterfall-island/}
+      - {type: redirect, source: /projects/modern-bathroom-renovation, destination: /projects/modern-kitchen-marble-waterfall-island/}
+      - {type: redirect, source: /projects/bathroom-renovation-walk-in-shower/*, destination: /projects/soho-manhattan-bathroom-walk-in-shower/}
+      - {type: redirect, source: /projects/bathroom-renovation-walk-in-shower, destination: /projects/soho-manhattan-bathroom-walk-in-shower/}
+      - {type: redirect, source: /projects/master-bathroom-tile-renovation/*, destination: /projects/90th-street-manhattan-bathroom-tile-renovation/}
+      - {type: redirect, source: /projects/master-bathroom-tile-renovation, destination: /projects/90th-street-manhattan-bathroom-tile-renovation/}

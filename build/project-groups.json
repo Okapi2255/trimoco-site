@@ -94,8 +94,8 @@
   ]
  },
  {
-  "slug": "bathroom-renovation-walk-in-shower",
-  "title": "Modern Bathroom Renovation with Walk-In Shower",
+  "slug": "soho-manhattan-bathroom-walk-in-shower",
+  "title": "SoHo, Manhattan: Bathroom Renovation with Walk-In Shower on Wooster Street",
   "photos": [
    "drive_1yEUylQHa_GkPbjrJvaWuNr1IOSzhxsw9.webp",
    "drive_13-01QVhgm0O0grlRwNz8esVtYkT4aJUY.webp",
@@ -112,8 +112,8 @@
   ]
  },
  {
-  "slug": "master-bathroom-tile-renovation",
-  "title": "Master Bathroom Tile Renovation",
+  "slug": "90th-street-manhattan-bathroom-tile-renovation",
+  "title": "90th Street, Manhattan: Master Bathroom Tile Renovation",
   "photos": [
    "drive_1xU-S-feI2FXxSj_wrQ_BS_J4NaBZMSj7.webp",
    "drive_1Tvm49WDFjYHUAz2yF3YPnmSJgtmTXiF0.webp",
@@ -123,6 +123,26 @@
    "Master Bathroom Tile Renovation",
    "Master Bathroom Shower Installation",
    "Master Bathroom Renovation with Glass Shower Enclosure"
+  ]
+ },
+ {
+  "slug": "astoria-queens-bathroom-renovation",
+  "title": "Astoria, Queens: Complete Bathroom Renovation",
+  "photos": [
+   "drive_1tH6ScSpBzv3k16xPLKaJaMGQUXUof8tC.webp"
+  ],
+  "orig_titles": [
+   "Complete Bathroom Renovation"
+  ]
+ },
+ {
+  "slug": "modern-kitchen-marble-waterfall-island",
+  "title": "Modern Kitchen with Marble Waterfall Island",
+  "photos": [
+   "drive_17HzGk7URLeSZUNI_RZhvVxdaZUZS2EtT.webp"
+  ],
+  "orig_titles": [
+   "Modern Bathroom Renovation"
   ]
  },
  {
@@ -176,16 +196,6 @@
   ]
  },
  {
-  "slug": "modern-bathroom-renovation",
-  "title": "Modern Bathroom Renovation",
-  "photos": [
-   "drive_17HzGk7URLeSZUNI_RZhvVxdaZUZS2EtT.webp"
-  ],
-  "orig_titles": [
-   "Modern Bathroom Renovation"
-  ]
- },
- {
   "slug": "garage-door-installation",
   "title": "Garage Door Installation",
   "photos": [
@@ -193,16 +203,6 @@
   ],
   "orig_titles": [
    "Garage Door Installation"
-  ]
- },
- {
-  "slug": "complete-bathroom-renovation",
-  "title": "Complete Bathroom Renovation",
-  "photos": [
-   "drive_1tH6ScSpBzv3k16xPLKaJaMGQUXUof8tC.webp"
-  ],
-  "orig_titles": [
-   "Complete Bathroom Renovation"
   ]
  },
  {
