@@ -1,0 +1,21 @@
+# Render Blueprint: Trimoco LLC static site (free static site plan)
+services:
+  - type: web
+    name: trimoco-site
+    runtime: static
+    buildCommand: ""
+    staticPublishPath: ./public
+    pullRequestPreviewsEnabled: false
+    headers:
+      - {path: /*, name: X-Content-Type-Options, value: nosniff}
+      - {path: /*, name: X-Frame-Options, value: SAMEORIGIN}
+      - {path: /*, name: Referrer-Policy, value: strict-origin-when-cross-origin}
+      - {path: /*, name: Permissions-Policy, value: "camera=(), microphone=(), geolocation=(), payment=()"}
+      - {path: /*, name: Strict-Transport-Security, value: "max-age=31536000"}
+      - {path: /images/*, name: Cache-Control, value: "public, max-age=2592000"}
+      - {path: /fonts/*, name: Cache-Control, value: "public, max-age=31536000, immutable"}
+      - {path: /_astro/*, name: Cache-Control, value: "public, max-age=31536000, immutable"}
+      - {path: /js/*, name: Cache-Control, value: "public, max-age=86400"}
+    routes:
+      - {type: redirect, source: /blog, destination: /}
+      - {type: redirect, source: /blog/*, destination: /}

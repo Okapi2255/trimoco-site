@@ -1,0 +1,6 @@
+# robots.txt for Trimoco LLC
+User-agent: *
+Allow: /
+Disallow: /thank-you/
+
+Sitemap: https://www.trimoco.com/sitemap.xml

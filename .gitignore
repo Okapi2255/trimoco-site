@@ -1,0 +1,6 @@
+node_modules/
+_orig/
+reports/
+screenshots/
+*.tgz
+__pycache__/

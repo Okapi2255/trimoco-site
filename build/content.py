@@ -1,0 +1,235 @@
+# Content added on top of the original trimoco.com copy.
+# Rule: no invented facts (no review counts, years, awards, client names, license numbers
+# other than the NYC DCWP record verified on NYC Open Data).
+
+LICENSE = "NYC DCWP Home Improvement Contractor License #2114773-DCA"
+
+# ---------- Area page add-ons: (h2, intro paragraphs, bullet list title, bullets, neighborhoods, faqs)
+AREAS = {
+ "manhattan-ny": {
+  "label": "Renovating in Manhattan",
+  "h2": "How a Manhattan co-op or condo renovation actually works",
+  "paras": [
+   "Most Manhattan renovations happen inside a building with its own rules, a managing agent and, for co-ops, a board. Before the first wall comes down, the building usually wants an alteration agreement, plans, a schedule and proof of insurance. Trimoco LLC plans for that paperwork from the first visit, so your project is not held up waiting on approvals.",
+   "We work in pre-war co-ops, post-war condos, brownstones and high-rise apartments. We schedule noisy work inside the building's permitted hours, book and protect the service elevator, cover hallways, and keep dust inside your unit.",
+  ],
+  "list_title": "What we handle for Manhattan buildings",
+  "bullets": [
+   "Alteration agreement scope of work, schedule and contractor information for your board or managing agent",
+   "Certificates of insurance (COI) naming the building and management company as additional insured, issued to the building's requirements",
+   "NYC Department of Buildings permits through DOB NOW when the scope requires them, coordinated with your architect or engineer",
+   "Wet-over-dry and plumbing-riser limits checked before your kitchen or bathroom layout is finalized",
+   "Elevator reservations, hallway protection, debris removal and building work-hour rules",
+   "Lead-safe work practices in pre-1978 apartments, as required by EPA and NYC rules",
+  ],
+  "hoods_title": "Manhattan neighborhoods we work in",
+  "hoods": ["Upper East Side","Upper West Side","Midtown","Chelsea","Tribeca","SoHo","Greenwich Village","Financial District","Harlem","Murray Hill","Gramercy","Battery Park City"],
+  "faqs": [
+   ("Can you help with my co-op board's alteration agreement?", "Yes. We prepare the contractor side of the package: scope of work, schedule, contractor information and certificates of insurance. If your project needs drawings, we coordinate with your architect or engineer so the board gets a complete submission."),
+   ("Do you provide a certificate of insurance for my building?", "Yes. Most Manhattan buildings require a certificate of insurance naming the building and its managing agent as additional insured, with limits set by the building. Send us your building's insurance requirements and we will have the certificate issued to match them."),
+   ("Is Trimoco licensed to do home improvement work in New York City?", "Yes. Trimoco LLC holds NYC Department of Consumer and Worker Protection Home Improvement Contractor License #2114773-DCA."),
+   ("Do I need a DOB permit for my Manhattan renovation?", "It depends on the scope. Cosmetic work like painting, flooring or replacing cabinets in place usually does not need one, while moving plumbing, changing walls or major electrical work usually does. We review your scope with you and, when a permit is needed, coordinate the DOB NOW filing with a licensed design professional."),
+  ],
+ },
+ "brooklyn-ny": {
+  "label": "Renovating in Brooklyn",
+  "h2": "Brownstones, row houses and co-ops across Brooklyn",
+  "paras": [
+   "Brooklyn homes range from 19th-century brownstones and limestone row houses to pre-war co-ops and new condo buildings. Each one needs a different plan. A brownstone kitchen may mean opening up old plaster walls and working around original trim. A co-op bathroom means working inside the building's alteration rules.",
+   "Trimoco LLC handles kitchens, bathrooms, gut renovations, framing, plaster, trim and flooring for Brooklyn homeowners. We plan for permits, building rules and landmark limits before work starts, so there are fewer surprises once the walls are open.",
+  ],
+  "list_title": "What we plan for in Brooklyn",
+  "bullets": [
+   "Landmarks Preservation Commission rules for exterior work on homes in historic districts such as Park Slope, Brooklyn Heights and Fort Greene",
+   "Plaster, crown molding and original trim matched or repaired so a renovated room still fits the house",
+   "Alteration agreements and certificates of insurance for co-op and condo apartments",
+   "NYC Department of Buildings permits through DOB NOW when the scope requires them",
+   "Lead-safe work practices in older homes",
+  ],
+  "hoods_title": "Brooklyn neighborhoods we work in",
+  "hoods": ["Park Slope","Brooklyn Heights","Williamsburg","Fort Greene","Clinton Hill","Bed-Stuy","Prospect Heights","Carroll Gardens","Cobble Hill","Bay Ridge","Greenpoint","Crown Heights"],
+  "faqs": [
+   ("Do you renovate brownstones in Brooklyn?", "Yes. We handle interior renovations in brownstones and row houses, including kitchens, bathrooms, framing, plaster repair and trim work. For exterior work in a historic district, the Landmarks Preservation Commission may need to approve the plans first, and we plan for that up front."),
+   ("Can you work in my Brooklyn co-op or condo?", "Yes. We provide the scope, schedule and certificates of insurance your building asks for, and we follow its work-hour and elevator rules."),
+  ],
+ },
+ "queens-ny": {
+  "label": "Renovating in Queens",
+  "h2": "Houses, garden co-ops and high-rises across Queens",
+  "paras": [
+   "Queens has a bit of everything: detached and attached houses, Tudor homes, garden-apartment co-ops and newer towers in Long Island City. Trimoco LLC renovates kitchens and bathrooms, finishes basements, and upgrades flooring, trim and electrical for Queens homeowners.",
+   "In a house, we can usually move faster and change more of the layout. In a co-op or condo, we follow the building's alteration rules, provide certificates of insurance, and schedule work around the building's hours.",
+  ],
+  "list_title": "What we plan for in Queens",
+  "bullets": [
+   "Kitchen and bathroom remodels in one- and two-family homes",
+   "Alteration agreements and certificates of insurance for co-op and condo apartments",
+   "NYC Department of Buildings permits through DOB NOW when the scope requires them",
+   "Flooring, tile, trim and painting to finish a room or a whole home",
+  ],
+  "hoods_title": "Queens neighborhoods we work in",
+  "hoods": ["Long Island City","Astoria","Forest Hills","Jackson Heights","Bayside","Flushing","Sunnyside","Rego Park","Kew Gardens","Ridgewood","Whitestone","Douglaston"],
+  "faqs": [
+   ("Do you work in Queens houses as well as apartments?", "Yes. We renovate both houses and co-op or condo apartments in Queens. Houses usually allow more layout changes, while apartments follow building rules, which we plan for before work starts."),
+  ],
+ },
+ "bronx-ny": {
+  "label": "Renovating in the Bronx",
+  "h2": "Pre-war apartments and family homes in the Bronx",
+  "paras": [
+   "Many Bronx homes are in pre-war elevator buildings, Art Deco co-ops or older one- and two-family houses. They often have plaster walls, aging wiring and original layouts that need care to update. Trimoco LLC renovates kitchens and bathrooms, repairs plaster and drywall, upgrades lighting and installs new flooring and trim.",
+   "In co-ops and condos, we work within the building's alteration rules and provide the certificates of insurance the managing agent needs.",
+  ],
+  "list_title": "What we plan for in the Bronx",
+  "bullets": [
+   "Plaster repair and drywall in pre-war apartments",
+   "Kitchen and bathroom renovations in co-ops, condos and houses",
+   "Alteration agreements and certificates of insurance for apartment buildings",
+   "NYC Department of Buildings permits through DOB NOW when the scope requires them",
+  ],
+  "hoods_title": "Bronx neighborhoods we work in",
+  "hoods": ["Riverdale","Pelham Bay","Throggs Neck","Morris Park","Kingsbridge","Fieldston","Spuyten Duyvil","Country Club","City Island","Parkchester","Mott Haven","Grand Concourse"],
+  "faqs": [
+   ("Do you renovate co-op apartments in Riverdale and the rest of the Bronx?", "Yes. We renovate co-op and condo apartments across the Bronx, and we provide the scope of work, schedule and certificates of insurance your building requires."),
+  ],
+ },
+ "long-island-ny": {
+  "label": "Renovating on Long Island",
+  "h2": "Your local Nassau County contractor, based in Lynbrook",
+  "paras": [
+   "Trimoco LLC is based at 20 Concord Street in Lynbrook, so Nassau County jobs are close to home. We renovate kitchens and bathrooms, do full gut renovations, install flooring, tile, trim and molding, and handle painting, plaster, framing, roofing and electrical work for Long Island homeowners.",
+   "On Long Island, building permits come from your town or incorporated village, not New York City. Rules differ between places like the Village of Lynbrook and the Town of Hempstead. We check what your project needs before work starts.",
+  ],
+  "list_title": "What we handle on Long Island",
+  "bullets": [
+   "Kitchen, bathroom and whole-home renovations in single-family houses",
+   "Building permits through your town or village when the scope requires them",
+   "Roofing, framing and exterior work alongside interior renovations",
+   "Flooring, tile, trim and painting to finish rooms or a whole house",
+  ],
+  "hoods_title": "Long Island communities we work in",
+  "hoods": ["Lynbrook","Rockville Centre","Valley Stream","Malverne","East Rockaway","Oceanside","Hewlett","Garden City","Baldwin","Freeport","Long Beach","Merrick"],
+  "faqs": [
+   ("Where is Trimoco based on Long Island?", "We are based at 20 Concord Street, Lynbrook, NY 11563, in Nassau County."),
+   ("Who issues building permits for Long Island renovations?", "Permits on Long Island come from your town or incorporated village, for example the Village of Lynbrook or the Town of Hempstead. We review your scope and tell you what is needed before we start."),
+  ],
+ },
+}
+
+# ---------- New service pages (cloned from the site's kitchen-renovation layout)
+SERVICES = [
+ {
+  "slug": "co-op-condo-renovation",
+  "name": "Co-op and Condo Renovation",
+  "title": "Co-op & Condo Renovation in Manhattan, NY | Trimoco LLC",
+  "desc": "Manhattan co-op and condo renovations with alteration agreements, certificates of insurance and DOB permits handled. Free estimates: (516) 787-1045.",
+  "lead": "Trimoco LLC renovates co-op and condo apartments across Manhattan, working inside your building's alteration rules from the first visit to the final walkthrough.",
+  "img": "/images/projects/drive_1iv0mlgPuuI4bk-placeholder",
+  "img_alt": "Renovated apartment kitchen with white cabinets, marble island, stainless steel appliances and pendant lights",
+  "benefits": [
+   "Contractor package for your alteration agreement: scope, schedule and contractor information",
+   "Certificates of insurance issued to your building's requirements",
+   "DOB NOW permit filings coordinated with your architect or engineer when the scope requires them",
+   "Layouts checked against wet-over-dry and riser limits before design is final",
+   "Elevator bookings, hallway protection and daily cleanup that keep your neighbors and super happy",
+   "One contractor for demolition, framing, plumbing and electrical coordination, tile, flooring, trim and paint",
+  ],
+  "body": "Renovating an apartment in Manhattan is different from renovating a house. Your co-op board or condo management has to approve the work, the building sets the hours when work can happen, and most buildings want a certificate of insurance before anyone sets foot in the unit. Trimoco LLC plans for all of that from the start. We prepare the contractor side of your alteration agreement, get certificates of insurance issued to your building's requirements, and coordinate with your architect or engineer when the job needs drawings or a Department of Buildings permit. Once work is approved, we reserve the service elevator, protect hallways, keep dust inside your unit and clean up every day. Our crews handle demolition, framing, drywall and plaster, tile, flooring, trim and molding, painting, and kitchen and bathroom installations, so you deal with one company instead of five. Call (516) 787-1045 to schedule a free estimate in your apartment.",
+  "faqs": [
+   ("How long does co-op board approval take?", "It varies by building. Some boards approve simple jobs in a couple of weeks, while larger renovations that need drawings and engineering review can take longer. We get our part of the package to your managing agent quickly so the contractor side does not slow you down."),
+   ("What is an alteration agreement?", "It is the contract between you and your building that sets the rules for your renovation: what work is allowed, the hours, insurance requirements, deposits and who is responsible for damage. Your building provides it, and we supply the contractor information and insurance it asks for."),
+   ("Will my renovation need a Department of Buildings permit?", "Cosmetic work such as painting, flooring and replacing fixtures in place usually does not. Moving plumbing, changing walls or major electrical work usually does. We review your scope and coordinate any DOB NOW filing with a licensed design professional."),
+   ("Are you licensed for home improvement work in NYC?", "Yes. Trimoco LLC holds NYC Department of Consumer and Worker Protection Home Improvement Contractor License #2114773-DCA."),
+  ],
+ },
+ {
+  "slug": "flooring-installation",
+  "name": "Flooring Installation",
+  "title": "Flooring Installation in Manhattan, NY | Trimoco LLC",
+  "desc": "Hardwood, engineered wood, vinyl plank and tile floors installed in Manhattan apartments and NYC homes. Free estimates: (516) 787-1045.",
+  "lead": "Trimoco LLC installs hardwood, engineered wood, luxury vinyl plank and tile floors in Manhattan apartments and homes across NYC and Long Island.",
+  "img": "/images/projects/drive_1JhAHdVm8NudTk-placeholder",
+  "img_alt": "Apartment interior with newly installed wood-look flooring and large windows overlooking city buildings",
+  "benefits": [
+   "Old flooring removed and the subfloor leveled before anything new goes down",
+   "Hardwood, engineered wood, luxury vinyl plank and tile options explained honestly",
+   "Sound-rated underlayment where your co-op or condo requires it",
+   "Clean transitions at doorways, baseboards and thresholds",
+   "Trim and baseboard reinstalled or replaced so the room looks finished",
+   "Dust control and daily cleanup in occupied apartments",
+  ],
+  "body": "New floors change the whole feel of a room, but only if the work under them is right. Trimoco LLC removes old flooring, checks and levels the subfloor, and then installs hardwood, engineered wood, luxury vinyl plank or tile. In Manhattan apartments, many co-op and condo buildings require sound-rated underlayment to protect the neighbors below, so we check your building's rules before ordering materials. We finish every job with clean transitions at doorways and new or reinstalled baseboards and trim, so the floor looks like it was always there. We install flooring as a single project or as part of a kitchen, bathroom or full renovation. Call (516) 787-1045 for a free estimate.",
+  "faqs": [
+   ("Does my building require soundproof underlayment?", "Many Manhattan co-op and condo buildings do. The requirement is usually in your alteration agreement or house rules. We check it before ordering materials so the floor is approved the first time."),
+   ("Can you install new floors in an occupied apartment?", "Yes. We work room by room when needed, contain dust, and clean up every day."),
+   ("Which flooring is best for my apartment?", "It depends on your budget, the room and your building's rules. Engineered wood and luxury vinyl plank handle humidity changes well, while solid hardwood can be refinished many times. We walk you through the options at the estimate."),
+  ],
+ },
+ {
+  "slug": "tile-installation",
+  "name": "Tile Installation",
+  "title": "Tile Installation in Manhattan, NY | Trimoco LLC",
+  "desc": "Bathroom, shower, kitchen backsplash and floor tile installed in Manhattan apartments and NYC homes, with proper waterproofing. Call (516) 787-1045.",
+  "lead": "Trimoco LLC installs tile in bathrooms, showers, kitchen backsplashes and floors for Manhattan apartments and homes across NYC and Long Island.",
+  "img": "/images/projects/drive_1Tvm49WDFjYHUA-placeholder",
+  "img_alt": "Modern shower with gray linear tile, dual showerheads and built-in niches",
+  "benefits": [
+   "Waterproofing behind and under every shower and wet area",
+   "Shower floors sloped properly to the drain",
+   "Straight, even grout lines and clean cuts around fixtures",
+   "Built-in niches, benches and accent walls",
+   "Porcelain, ceramic, marble and mosaic tile",
+   "Wet-over-dry and building rules checked in co-ops and condos",
+  ],
+  "body": "Good tile work is mostly what you cannot see. Before the first tile is set, Trimoco LLC prepares the substrate, waterproofs showers and wet areas, and slopes shower floors to the drain. Then we lay out the tile so cuts land in the right places and grout lines run straight. We install porcelain, ceramic, marble and mosaic tile in bathrooms, walk-in showers, kitchen backsplashes and floors, along with built-in niches and benches. In Manhattan co-ops and condos, we check your building's wet-over-dry and alteration rules before any bathroom layout changes. Call (516) 787-1045 for a free estimate.",
+  "faqs": [
+   ("Do you waterproof showers before tiling?", "Yes. Every shower and wet area gets a waterproofing layer before tile goes on. It is the most important step for preventing leaks into the apartment below."),
+   ("Can you install marble tile?", "Yes. We install natural stone, including marble, as well as porcelain, ceramic and mosaic tile."),
+   ("Do you do backsplashes only?", "Yes. We take on backsplash-only jobs as well as full kitchen and bathroom renovations."),
+  ],
+ },
+ {
+  "slug": "painting-and-plaster",
+  "name": "Painting and Plaster Repair",
+  "title": "Painting & Plaster Repair in Manhattan, NY | Trimoco LLC",
+  "desc": "Interior painting, skim coating and plaster repair for Manhattan pre-war apartments, brownstones and NYC homes. Free estimates: (516) 787-1045.",
+  "lead": "Trimoco LLC repairs plaster, skim coats walls and paints interiors for Manhattan pre-war apartments, brownstones and homes across NYC and Long Island.",
+  "img": "/images/projects/drive_1XHMw5nUnXKD1c-placeholder",
+  "img_alt": "Renovated living room with freshly painted walls and hardwood flooring",
+  "benefits": [
+   "Cracked and damaged plaster repaired to match the surrounding wall",
+   "Skim coating for smooth walls and ceilings",
+   "Careful prep: patching, sanding, priming and caulking before paint",
+   "Clean lines at ceilings, trim and doors",
+   "Lead-safe work practices in pre-1978 homes",
+   "Furniture and floors protected; daily cleanup",
+  ],
+  "body": "Pre-war apartments and brownstones often have plaster walls that crack, bulge or show old repairs. Trimoco LLC repairs damaged plaster, skim coats walls and ceilings smooth, and then paints with careful prep: patching, sanding, priming and caulking so the finish lasts. We cut clean lines at ceilings, trim and doors, protect your floors and furniture, and clean up every day. In homes built before 1978, we follow lead-safe work practices when we disturb painted surfaces. We take on single rooms, whole apartments and painting as the final step of a larger renovation. Call (516) 787-1045 for a free estimate.",
+  "faqs": [
+   ("Can you repair old plaster instead of replacing it with drywall?", "Often, yes. Many plaster walls can be repaired and skim coated instead of torn out, which keeps the character of a pre-war apartment and creates less mess. We assess the walls at the estimate."),
+   ("Do you paint occupied apartments?", "Yes. We cover floors and furniture, work room by room when needed, and clean up at the end of each day."),
+  ],
+ },
+ {
+  "slug": "roofing",
+  "name": "Roofing",
+  "title": "Roofing Repair & Replacement on Long Island & NYC | Trimoco LLC",
+  "desc": "Roof repair and replacement for homes on Long Island and in NYC from Trimoco LLC in Lynbrook, NY. Free estimates: (516) 787-1045.",
+  "lead": "Trimoco LLC repairs and replaces roofs for homeowners on Long Island and in New York City, working from our base in Lynbrook.",
+  "img": "/images/services/custom-home-construction.webp",
+  "img_alt": "Residential home construction project",
+  "benefits": [
+   "Free roof inspection and a clear written estimate",
+   "Leak repairs and damaged shingle replacement",
+   "Full roof replacement when repairs no longer make sense",
+   "Flashing around chimneys, vents and skylights checked and repaired",
+   "Permits through your town or village when required",
+   "Job site cleaned up at the end of the work",
+  ],
+  "body": "A small leak can turn into rotted framing and damaged ceilings if it is left alone. Trimoco LLC inspects your roof, explains what we find, and gives you a clear written estimate for a repair or a full replacement. We repair leaks, replace damaged shingles, and check the flashing around chimneys, vents and skylights, where many leaks start. When a roof is past repair, we replace it and pull any permits your town or village requires. Because we also handle framing, drywall, plaster and painting, we can fix the damage inside your home after the roof is sound. Call (516) 787-1045 to schedule a free roof inspection.",
+  "faqs": [
+   ("Should I repair or replace my roof?", "It depends on the roof's age, how widespread the damage is, and whether leaks keep coming back. We inspect the roof and give you an honest recommendation with a written estimate for each option."),
+   ("Can you also fix the ceiling damage from a leak?", "Yes. Once the roof is repaired, we can repair framing, drywall or plaster and repaint the damaged areas inside."),
+  ],
+ },
+]
