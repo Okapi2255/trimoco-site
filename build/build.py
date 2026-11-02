@@ -156,8 +156,8 @@ def common(s,path):
     s=fix_reviews(s)
     s=fix_hours(s)
     # footer: license + extra service links
-    extra=' · '.join(f'<a href="{u}" class="hover:text-accent">{n}</a>' for u,n in EXTRA_LINKS)
-    s=s.replace('&copy; 2026 Trimoco LLC. All rights reserved.',f'&copy; 2026 Trimoco LLC. All rights reserved. {LICENSE}.</p><p class="text-xs mt-2">More services: {extra}',1)
+    extra=' · '.join(f'<a href="{u}" class="text-text-footer no-underline transition-colors duration-150 hover:text-accent-light">{n}</a>' for u,n in EXTRA_LINKS)
+    s=s.replace('&copy; 2026 Trimoco LLC. All rights reserved.',f'&copy; 2026 Trimoco LLC. All rights reserved. {LICENSE}.</p><p class="text-xs text-text-on-dark-muted mt-2">More services: {extra}',1)
     # JSON-LD business: credential, url
     def upd(m):
         d=json.loads(m.group(1))
