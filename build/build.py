@@ -94,7 +94,28 @@ def area_section(a):
     hoods=''.join(f'<li class="badge">{esc(h)}</li>' for h in a['hoods'])
     return f'''<!-- ─── LOCAL GUIDE (added for SEO) ─── --> <section class="section-pad bg-surface" aria-labelledby="area-guide-heading"> <div class="container-site"> <div class="max-w-[820px] reveal"> <span class="section-label">{esc(a['label'])}</span> <h2 id="area-guide-heading" class="font-heading text-[clamp(1.75rem,_4vw,_2.5rem)] font-bold mb-3">{esc(a['h2'])}</h2> <span class="accent-bar"></span> <div class="mt-6 flex flex-col gap-4 mb-8">{paras}</div> <div class="flex flex-col gap-3 mb-8 p-5 bg-surface-raised border border-border rounded-xl"> <h3 class="text-[1.0625rem] font-bold m-0">{esc(a['list_title'])}</h3> <ul class="list-none m-0 p-0 flex flex-col gap-2.5" role="list">{bullets}</ul> </div> <h3 class="text-[1.0625rem] font-bold mb-3">{esc(a['hoods_title'])}</h3> <ul class="list-none m-0 p-0 flex flex-wrap gap-2" role="list">{hoods}</ul> <p class="text-sm text-text-muted mt-6">{LICENSE}.</p> </div> </div> </section> '''
 
-EXTRA_LINKS=[('/services/general-contractor/co-op-condo-renovation/','Co-op & Condo Renovation'),('/services/general-contractor/flooring-installation/','Flooring Installation'),('/services/general-contractor/tile-installation/','Tile Installation'),('/services/general-contractor/painting-and-plaster/','Painting & Plaster'),('/services/general-contractor/roofing/','Roofing')]
+def guide_section(g,related=()):
+    # g: dict(label,h2,paras[html, trusted, ours],list_title,bullets); related: project slugs (real, owner-confirmed)
+    # class before href on purpose: keeps sitewide_hamptons from inserting a hub link before our East Hampton link
+    paras=''.join(f'<p class="text-base text-text-secondary leading-[1.75]">{p}</p>' for p in g['paras']).replace('<a href=','<a class="text-accent font-medium underline underline-offset-2" href=')
+    bullets=''.join(f'<li class="flex items-start gap-3 text-[0.9375rem] text-text-secondary">{CHECK} {esc(b)}</li>' for b in g['bullets'])
+    rel=''
+    if related:
+        G={x['slug']:x for x in json.load(open(ROOT+'/build/project-groups.json'))}
+        cards=''
+        for sl in related:
+            if sl not in G: continue
+            x=G[sl]; loc,_,ttl=x['title'].partition(': ')
+            cards+=(f'<a href="/projects/{sl}/" class="card group flex flex-col no-underline overflow-hidden"><div class="relative aspect-[4/3] overflow-hidden"><img src="/images/projects/{x["photos"][0]}" alt="{esc(ttl or loc)}, {esc(loc)}" width="400" height="300" loading="lazy" decoding="async" class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.04]"></div>'
+                    f'<div class="px-4 py-3 flex flex-col gap-1"><span class="text-xs text-text-muted">{esc(loc)}</span><span class="text-[0.9375rem] font-semibold text-text leading-snug group-hover:text-accent">{esc(ttl or loc)}</span></div></a>')
+        rel=(f'<h3 class="text-[1.0625rem] font-bold mb-2">Recent projects</h3><p class="text-sm text-text-muted mb-4">Photos from our project gallery. <a href="/projects/" class="text-accent underline underline-offset-2">See all projects</a></p>'
+             f'<div class="grid grid-cols-2 lg:grid-cols-4 gap-4">{cards}</div>')
+    return (f'<!-- ─── SERVICE GUIDE (added for SEO) ─── --> <section class="section-pad bg-surface" aria-labelledby="svc-guide-heading"> <div class="container-site"> <div class="max-w-[820px] reveal"> <span class="section-label">{esc(g["label"])}</span> '
+            f'<h2 id="svc-guide-heading" class="font-heading text-[clamp(1.75rem,_4vw,_2.5rem)] font-bold mb-3">{esc(g["h2"])}</h2> <span class="accent-bar"></span> <div class="mt-6 flex flex-col gap-4 mb-8">{paras}</div> '
+            f'<div class="flex flex-col gap-3 mb-10 p-5 bg-surface-raised border border-border rounded-xl"> <h3 class="text-[1.0625rem] font-bold m-0">{esc(g["list_title"])}</h3> <ul class="list-none m-0 p-0 flex flex-col gap-2.5" role="list">{bullets}</ul> </div> </div> {rel} '
+            f'<p class="text-sm text-text-muted mt-6">{LICENSE}. Based in Farmingdale, NY.</p> </div> </section> ')
+
+EXTRA_LINKS=[('/services/general-contractor/co-op-condo-renovation/','Co-op & Condo Renovation'),('/services/general-contractor/flooring-installation/','Flooring Installation'),('/services/general-contractor/tile-installation/','Tile Installation'),('/services/general-contractor/interior-painting/','Interior Painting'),('/services/general-contractor/plaster-and-skim-coating/','Plaster & Skim Coating'),('/services/carpenter/drywall-and-framing/','Drywall Installation & Repair'),('/services/general-contractor/roofing/','Roofing')]
 
 def common(s,path):
     url=BASE+'/'+(path+'/' if path else '')
@@ -229,12 +250,16 @@ for sv in SERVICES:
     s=re.sub(r'<title>.*?</title>',f'<title>{esc(sv["title"])}</title>',s,flags=re.S)
     s=re.sub(r'(<meta (?:property="og:title"|name="twitter:title") content=")[^"]*',lambda m:m.group(1)+esc(sv['title']),s)
     s=re.sub(r'<meta name="description" content="[^"]*"',f'<meta name="description" content="{esc(sv["desc"])}"',s)
+    if sv.get('guide'): s=s.replace('<!-- FAQ for this service -->',guide_section(sv['guide'],sv.get('related',()))+'<!-- FAQ for this service -->',1)
     path=f'services/general-contractor/{sv["slug"]}'
     PAGE_META[path]=(None,sv['desc'])
     s=common(s,path)
     leftover=[w for w in ['Kitchen Renovation FAQ','wet-over-dry rule prevents'] if w in s]
     if leftover: print('WARN leftover',sv['slug'],leftover)
     write(path,s); pages.append(path)
+
+# retired slug (301 -> interior-painting in render.yaml): remove stale build output so the redirect applies
+shutil.rmtree(OUT+'/services/general-contractor/painting-and-plaster',ignore_errors=True)
 
 # add new pages to "More General Contractor Services" lists & category page via simple link injection
 for f in glob.glob(OUT+'/services/general-contractor/**/index.html',recursive=True):
@@ -284,3 +309,5 @@ exec(open(ROOT+'/build/projects.py').read(),{})
 # ---- Hamptons prominence (links, footer, home spotlight)
 exec(open(ROOT+'/build/sitewide_hamptons.py').read(),globals())
 exec(open(ROOT+'/build/farmingdale.py').read(),globals())
+# ---- painting / plaster / drywall: nav, grid, footer, schema, drywall page upgrade
+exec(open(ROOT+'/build/services_extra.py').read(),globals())

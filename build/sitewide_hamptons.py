@@ -9,6 +9,7 @@ def add_hub_before_east(s):
     for m in re.finditer(r'<a href="/areas/east-hampton/"[^>]*>.*?</a>',s,re.S):
         a=m.group(0)
         if 'data-hub' in s[max(0,m.start()-1500):m.start()] and '/areas/hamptons/' in s[max(0,m.start()-1500):m.start()]: continue
+        if '/areas/hamptons/' in s[max(0,m.start()-300):m.start()]: continue  # hub link already right before this one
         hub=a.replace('href="/areas/east-hampton/"','href="/areas/hamptons/" data-hub',1).replace('East Hampton, NY','The Hamptons',1)
         hub=hub.replace('Amagansett, Springs, Montauk +2','Southampton, Sag Harbor, Montauk +6',1)
         sep=SEP_RE.search(s[max(0,m.start()-200):m.start()])

@@ -59,3 +59,5 @@ services:
       - {type: redirect, source: /projects/contemporary-kitchen-renovation-with-custom-cabinetry, destination: /projects/upper-west-side-contemporary-kitchen-custom-cabinetry/}
       - {type: redirect, source: /projects/modern-kitchen-renovation-with-custom-cabinetry/*, destination: /projects/lindenhurst-ny-modern-kitchen-custom-cabinetry/}
       - {type: redirect, source: /projects/modern-kitchen-renovation-with-custom-cabinetry, destination: /projects/lindenhurst-ny-modern-kitchen-custom-cabinetry/}
+      - {type: redirect, source: /services/general-contractor/painting-and-plaster/*, destination: /services/general-contractor/interior-painting/}
+      - {type: redirect, source: /services/general-contractor/painting-and-plaster, destination: /services/general-contractor/interior-painting/}
