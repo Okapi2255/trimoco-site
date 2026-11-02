@@ -95,9 +95,9 @@ AREAS = {
  },
  "long-island-ny": {
   "label": "Renovating on Long Island",
-  "h2": "Your local Nassau County contractor, based in Lynbrook",
+  "h2": "Your local Long Island contractor, based in Farmingdale",
   "paras": [
-   "Trimoco LLC is based at 20 Concord Street in Lynbrook, so Nassau County jobs are close to home. We renovate kitchens and bathrooms, do full gut renovations, install flooring, tile, trim and molding, and handle painting, plaster, framing, roofing and electrical work for Long Island homeowners.",
+   "Trimoco LLC is based in Farmingdale, so jobs across Nassau and western Suffolk are close to home. We renovate kitchens and bathrooms, do full gut renovations, install flooring, tile, trim and molding, and handle painting, plaster, framing, roofing and electrical work for Long Island homeowners.",
    "On Long Island, building permits come from your town or incorporated village, not New York City. Rules differ between places like the Village of Lynbrook and the Town of Hempstead. We check what your project needs before work starts.",
   ],
   "list_title": "What we handle on Long Island",
@@ -108,9 +108,9 @@ AREAS = {
    "Flooring, tile, trim and painting to finish rooms or a whole house",
   ],
   "hoods_title": "Long Island communities we work in",
-  "hoods": ["Lynbrook","Rockville Centre","Valley Stream","Malverne","East Rockaway","Oceanside","Hewlett","Garden City","Baldwin","Freeport","Long Beach","Merrick"],
+  "hoods": ["Farmingdale","Bethpage","Massapequa","Lynbrook","Rockville Centre","Valley Stream","Malverne","East Rockaway","Oceanside","Hewlett","Garden City","Baldwin","Freeport","Long Beach","Merrick"],
   "faqs": [
-   ("Where is Trimoco based on Long Island?", "We are based at 20 Concord Street, Lynbrook, NY 11563, in Nassau County."),
+   ("Where is Trimoco based on Long Island?", "We are based in Farmingdale, NY 11735, on Long Island."),
    ("Who issues building permits for Long Island renovations?", "Permits on Long Island come from your town or incorporated village, for example the Village of Lynbrook or the Town of Hempstead. We review your scope and tell you what is needed before we start."),
   ],
  },
@@ -214,8 +214,8 @@ SERVICES = [
   "slug": "roofing",
   "name": "Roofing",
   "title": "Roofing Repair & Replacement on Long Island & NYC | Trimoco LLC",
-  "desc": "Roof repair and replacement for homes on Long Island and in NYC from Trimoco LLC in Lynbrook, NY. Free estimates: (516) 787-1045.",
-  "lead": "Trimoco LLC repairs and replaces roofs for homeowners on Long Island and in New York City, working from our base in Lynbrook.",
+  "desc": "Roof repair and replacement for homes on Long Island and in NYC from Trimoco LLC in Farmingdale, NY. Free estimates: (516) 787-1045.",
+  "lead": "Trimoco LLC repairs and replaces roofs for homeowners on Long Island and in New York City, working from our base in Farmingdale.",
   "img": "/images/services/custom-home-construction.webp",
   "img_alt": "Residential home construction project",
   "benefits": [

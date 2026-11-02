@@ -45,7 +45,7 @@ for f in glob.glob(OUT+'/**/*.html',recursive=True):
     rel=os.path.relpath(f,OUT)
     if rel=='index.html' and 'Hamptons spotlight' not in s:
         s=s.replace('<!-- Other areas grid -->',HOME_BLOCK+'<!-- Other areas grid -->',1)
-        s=s.replace('Based in Lynbrook — serving Manhattan, Brooklyn, Queens, the Bronx and Long Island.','Based in Lynbrook — serving Manhattan first, plus the Hamptons, Brooklyn, Queens, the Bronx and Long Island.')
+        s=s.replace('Based in Farmingdale — serving Manhattan, Brooklyn, Queens, the Bronx and Long Island.','Based in Farmingdale — serving Manhattan first, plus the Hamptons, Brooklyn, Queens, the Bronx and Long Island.')
     if rel=='areas/long-island-ny/index.html' and 'li-hamptons-heading' not in s:
         s=s.replace('<!-- ─── LOCAL GUIDE (added for SEO) ─── -->',LI_BLOCK+'<!-- ─── LOCAL GUIDE (added for SEO) ─── -->',1)
     if rel=='404.html' and '/areas/hamptons/" class="btn-ghost"' not in s:

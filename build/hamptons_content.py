@@ -38,7 +38,7 @@ PAGES = {
   label='Renovating in the Hamptons', h2='Second-home renovations, planned around your season',
   paras=[
    'A house in the Hamptons is usually not a primary residence. You may be in the city all week, rent the house out in July and August, or only open it up from Memorial Day to Labor Day. That changes how a renovation should be run. The schedule, the deliveries, the inspections and the final punch list all have to work without you standing in the kitchen every morning.',
-   'Trimoco LLC is a full-service general contractor based in Lynbrook, on the South Shore of Long Island. We renovate kitchens and bathrooms, install tile and flooring, build and install cabinetry, trim and millwork, and handle painting and plaster. For Hamptons homeowners we put the most weight on two things: a realistic schedule that fits the off-season, and clear, regular updates for owners who are not on site.',
+   'Trimoco LLC is a full-service general contractor based in Farmingdale, Long Island. We renovate kitchens and bathrooms, install tile and flooring, build and install cabinetry, trim and millwork, and handle painting and plaster. For Hamptons homeowners we put the most weight on two things: a realistic schedule that fits the off-season, and clear, regular updates for owners who are not on site.',
    'Manhattan is our primary service area, so we are set up to work with owners who make decisions by phone, email and photos. If your main home is in the city and your second home is out east, one contractor can handle both.',
   ],
   glance=['Free on-site estimate and a written scope before you commit','Off-season scheduling planned around rentals and summer use','Photo updates and decisions by phone or email when you are in the city','Kitchens, baths, tile, millwork, flooring and painting under one contractor'],
@@ -124,7 +124,7 @@ PAGES = {
   chips=['Westhampton Beach','Westhampton','Quogue','Remsenburg','Speonk','East Quogue','Hampton Bays','Dune Road'],
   label='Renovating in Westhampton', h2='Kitchen and bath remodeling in Westhampton and Westhampton Beach',
   paras=[
-   'Westhampton and Westhampton Beach are the closest Hamptons communities to the rest of Long Island, roughly an hour and a half east of our base in Lynbrook. Homes range from village houses near Main Street to bay-front homes, newer houses north of Montauk Highway, and beach houses along Dune Road.',
+   'Westhampton and Westhampton Beach are the closest Hamptons communities to the rest of Long Island, about an hour and a quarter east of our base in Farmingdale, depending on traffic. Homes range from village houses near Main Street to bay-front homes, newer houses north of Montauk Highway, and beach houses along Dune Road.',
    'Many owners here use the house on summer weekends and want renovations finished in the off-season. Trimoco LLC plans kitchen and bathroom remodels, tile, trim, flooring and painting around that, with a written schedule and regular photo updates if you are in the city during the week.',
    'Westhampton Beach is an incorporated village with its own building department, while Westhampton, Remsenburg, Speonk, East Quogue and Hampton Bays fall under the Town of Southampton, and Quogue is its own village. We confirm which one covers your address and what your scope requires before work is scheduled.',
   ],

@@ -29,8 +29,8 @@ PAGE_META={
  'areas/brooklyn-ny': (None,'Brooklyn brownstone, row house and co-op renovations: kitchens, bathrooms, plaster, trim and flooring. Free estimates: (516) 787-1045.'),
  'areas/queens-ny': (None,'Kitchen, bathroom and whole-home renovations for Queens houses, co-ops and condos. Free estimates from Trimoco LLC: (516) 787-1045.'),
  'areas/bronx-ny': (None,'Kitchen, bathroom, plaster and flooring renovations for Bronx co-ops, condos and homes. Free estimates from Trimoco LLC: (516) 787-1045.'),
- 'areas/long-island-ny': ('General Contractor in Long Island & Nassau County | Trimoco LLC','Lynbrook-based general contractor for Nassau County and Long Island: kitchens, bathrooms, gut renovations, roofing. Free estimates: (516) 787-1045.'),
- 'about': (None,'Trimoco LLC is a Lynbrook, NY general contractor serving Manhattan, Brooklyn, Queens, the Bronx and Long Island since 2021. Call (516) 787-1045.'),
+ 'areas/long-island-ny': ('General Contractor in Long Island & Nassau County | Trimoco LLC','Farmingdale-based general contractor for Nassau County and Long Island: kitchens, bathrooms, gut renovations, roofing. Free estimates: (516) 787-1045.'),
+ 'about': (None,'Trimoco LLC is a Farmingdale, NY general contractor serving Manhattan, Brooklyn, Queens, the Bronx and Long Island since 2021. Call (516) 787-1045.'),
  'projects': ('Renovation Projects in NYC & Long Island | Trimoco LLC',None),
 }
 NOINDEX={'thank-you','marketing-form','discount','review','blog'}
@@ -124,7 +124,7 @@ def common(s,path):
     # internal links: trailing slash
     s=re.sub(r'href="(/(?:services|areas|about|contact|projects|privacy|terms|review|blog|discount)[^"#?]*?)(?<!/)"',r'href="\1/"',s)
     # map embed without third-party API key
-    s=re.sub(r'<iframe src="https://www\.google\.com/maps/embed/v1/place\?[^"]*"','<iframe src="https://maps.google.com/maps?q=20+Concord+St,+Lynbrook,+NY+11563&amp;output=embed"',s)
+    s=re.sub(r'<iframe src="https://www\.google\.com/maps/embed/v1/place\?[^"]*"','<iframe src="https://maps.google.com/maps?q=Farmingdale,+NY+11735&amp;output=embed"',s)
     # forms
     s=s.replace('data-submit-url="https://api.stonesystems.io/public-forms/submit"','data-submit-url="local"')
     s=s.replace(FORM_PATCH_OLD,FORM_PATCH_NEW)
@@ -176,7 +176,7 @@ for f in glob.glob(SRC+'/**/index.html',recursive=True):
     if path=='':
         s=s.replace('Serving <span class="capitalize">Long Island</span>','Serving <span class="capitalize">NYC &amp; Long Island</span>')
         s=s.replace('Services Across\nLong Island','Services Across\nNYC &amp; Long Island')
-        s=s.replace('Based in Lynbrook — serving every corner of Long Island.','Based in Lynbrook — serving Manhattan, Brooklyn, Queens, the Bronx and Long Island.')
+        s=s.replace('Based in Lynbrook — serving every corner of Long Island.','Based in Farmingdale — serving Manhattan, Brooklyn, Queens, the Bronx and Long Island.')
     slug=path.split('/')[-1]
     if path in ('areas/east-hamptons-ny','areas/west-hamptons-ny'): continue  # replaced by /areas/east-hampton/ and /areas/westhampton/ (301)
     if path.startswith('areas/') and slug in AREAS:
@@ -283,3 +283,4 @@ exec(open(ROOT+'/build/projects.py').read(),{})
 
 # ---- Hamptons prominence (links, footer, home spotlight)
 exec(open(ROOT+'/build/sitewide_hamptons.py').read(),globals())
+exec(open(ROOT+'/build/farmingdale.py').read(),globals())
