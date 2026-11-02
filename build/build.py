@@ -24,7 +24,7 @@ def trim_desc(d,limit=158):
 
 PAGE_META={
  '': ('Manhattan General Contractor & Renovations | Trimoco LLC',
-      'Kitchen, bathroom and full gut renovations in Manhattan, Brooklyn, Queens, the Bronx and Long Island. NYC licensed. Free estimates: (516) 787-1045.'),
+      'Kitchen, bathroom and gut renovations in Manhattan, the Hamptons, Brooklyn, Queens, the Bronx and Long Island. NYC licensed. Free estimates: (516) 787-1045.'),
  'areas/manhattan-ny': ('Manhattan Contractor: Co-op & Condo Renovations | Trimoco LLC','Manhattan co-op, condo and brownstone renovations: kitchens, bathrooms, gut renovations. Alteration agreements and COIs handled. (516) 787-1045.'),
  'areas/brooklyn-ny': (None,'Brooklyn brownstone, row house and co-op renovations: kitchens, bathrooms, plaster, trim and flooring. Free estimates: (516) 787-1045.'),
  'areas/queens-ny': (None,'Kitchen, bathroom and whole-home renovations for Queens houses, co-ops and condos. Free estimates from Trimoco LLC: (516) 787-1045.'),
@@ -145,9 +145,12 @@ def common(s,path):
             d['image']=BASE+'/images/og-home.jpg'; d['logo']=BASE+'/images/logo.png'
             d['hasCredential']={"@type":"EducationalOccupationalCredential","credentialCategory":"license","name":"NYC Home Improvement Contractor License","identifier":"2114773-DCA","recognizedBy":{"@type":"GovernmentOrganization","name":"NYC Department of Consumer and Worker Protection"}}
             names=[a['name'] for a in d.get('areaServed',[])]
+            d['areaServed']=[a for a in d['areaServed'] if a['name'] not in ('East Hamptons, NY','West Hamptons, NY')]+[{"@type":"Place","name":n} for n in ['The Hamptons, NY','East Hampton, NY','Westhampton, NY','Westhampton Beach, NY','Southampton, NY'] if n not in names]
             if 'Nassau County, NY' not in names: d['areaServed'].append({"@type":"AdministrativeArea","name":"Nassau County, NY"})
             d['description']=d['description'].replace('Manhattan, Brooklyn, Queens, Long Island','Manhattan, Brooklyn, Queens, the Bronx, Long Island')
             # TODO(owner): add "sameAs": [Google Business Profile URL, Facebook, Instagram, Houzz, Yelp]
+        elif isinstance(d.get('areaServed'),list) and any(a.get('name')=='East Hamptons, NY' for a in d['areaServed']):
+            d['areaServed']=[a for a in d['areaServed'] if a['name'] not in ('East Hamptons, NY','West Hamptons, NY')]+[{"@type":"Place","name":n} for n in ['The Hamptons, NY','East Hampton, NY','Westhampton, NY','Westhampton Beach, NY','Southampton, NY']]
         return '<script type="application/ld+json">'+json.dumps(d,ensure_ascii=False)+'</script>'
     s=re.sub(r'<script type="application/ld\+json">(.*?)</script>',upd,s,flags=re.S)
     s=re.sub(r'("item":"https://www\.trimoco\.com/[^"]*?)(?<!/)"',r'\1/"',s)
@@ -175,12 +178,16 @@ for f in glob.glob(SRC+'/**/index.html',recursive=True):
         s=s.replace('Services Across\nLong Island','Services Across\nNYC &amp; Long Island')
         s=s.replace('Based in Lynbrook — serving every corner of Long Island.','Based in Lynbrook — serving Manhattan, Brooklyn, Queens, the Bronx and Long Island.')
     slug=path.split('/')[-1]
+    if path in ('areas/east-hamptons-ny','areas/west-hamptons-ny'): continue  # replaced by /areas/east-hampton/ and /areas/westhampton/ (301)
     if path.startswith('areas/') and slug in AREAS:
         a=AREAS[slug]
         s=s.replace('<!-- ─── SERVICES ──',area_section(a)+'<!-- ─── SERVICES ──',1)
         s=add_faqs(s,a['faqs'],'a')
     s=common(s,path); write(path,s)
     if path.split('/')[0] not in NOINDEX: pages.append(path)
+
+# ---- Hamptons pages
+exec(open(ROOT+'/build/hamptons.py').read(),globals())
 
 # ---- new service pages, cloned from kitchen-renovation
 tpl=open(SRC+'/services/general-contractor/kitchen-renovation/index.html').read()
@@ -239,7 +246,7 @@ for f in glob.glob(OUT+'/services/general-contractor/**/index.html',recursive=Tr
 
 # robots, sitemap, forms.js, 404, render config
 open(OUT+'/robots.txt','w').write(f"# robots.txt for Trimoco LLC\nUser-agent: *\nAllow: /\nDisallow: /thank-you/\n\nSitemap: {BASE}/sitemap.xml\n")
-prio={'':'1.0','areas/manhattan-ny':'0.9','services/general-contractor/co-op-condo-renovation':'0.9'}
+prio={'':'1.0','areas/manhattan-ny':'0.9','areas/hamptons':'0.85','areas/east-hampton':'0.85','areas/westhampton':'0.85','services/general-contractor/co-op-condo-renovation':'0.9'}
 urls=''.join(f'<url><loc>{BASE}/{p+"/" if p else ""}</loc><priority>{prio.get(p,"0.8" if p.startswith(("areas","services")) else "0.5")}</priority></url>' for p in sorted(pages))
 open(OUT+'/sitemap.xml','w').write('<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+urls+'</urlset>')
 for old in ['sitemap-index.xml','sitemap-0.xml']:
@@ -273,3 +280,6 @@ make_404()
 # ---- project gallery pages ----
 shutil.copy(ROOT+'/build/gallery.js',OUT+'/js/gallery.js')
 exec(open(ROOT+'/build/projects.py').read(),{})
+
+# ---- Hamptons prominence (links, footer, home spotlight)
+exec(open(ROOT+'/build/sitewide_hamptons.py').read(),globals())

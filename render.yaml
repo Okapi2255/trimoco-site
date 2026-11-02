@@ -31,3 +31,7 @@ services:
       - {type: redirect, source: /projects/bathroom-renovation-walk-in-shower, destination: /projects/soho-manhattan-bathroom-walk-in-shower/}
       - {type: redirect, source: /projects/master-bathroom-tile-renovation/*, destination: /projects/90th-street-manhattan-bathroom-tile-renovation/}
       - {type: redirect, source: /projects/master-bathroom-tile-renovation, destination: /projects/90th-street-manhattan-bathroom-tile-renovation/}
+      - {type: redirect, source: /areas/east-hamptons-ny/*, destination: /areas/east-hampton/}
+      - {type: redirect, source: /areas/east-hamptons-ny, destination: /areas/east-hampton/}
+      - {type: redirect, source: /areas/west-hamptons-ny/*, destination: /areas/westhampton/}
+      - {type: redirect, source: /areas/west-hamptons-ny, destination: /areas/westhampton/}
