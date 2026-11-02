@@ -44,6 +44,7 @@ def fix_reviews(s):
     # No Review/AggregateRating schema (Google ignores self-serving LocalBusiness review stars).
     s=s.replace('What Nassau County homeowners <em class="italic text-accent">say.</em>','What our clients <em class="italic text-accent">say.</em>')
     s=s.replace('<span class="text-sm text-text-secondary">3 Google reviews</span>','<a href="'+GMAPS+'" target="_blank" rel="noopener" class="text-sm text-text-secondary underline underline-offset-2 hover:text-accent">3 Google reviews</a>')
+    s=s.replace(' aria-label="Top-rated by local clients — jump to client reviews"','')
     return s
 
 def fix_hours(s):
@@ -268,3 +269,7 @@ def make_404():
     h=h.replace('<head>','<head><meta name="robots" content="noindex">',1) if 'name="robots"' not in h else re.sub(r'<meta name="robots" content="[^"]*">','<meta name="robots" content="noindex">',h)
     open(os.path.join(OUT,'404.html'),'w').write(h)
 make_404()
+
+# ---- project gallery pages ----
+shutil.copy(ROOT+'/build/gallery.js',OUT+'/js/gallery.js')
+exec(open(ROOT+'/build/projects.py').read(),{})
