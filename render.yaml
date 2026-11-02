@@ -19,3 +19,5 @@ services:
     routes:
       - {type: redirect, source: /blog, destination: /}
       - {type: redirect, source: /blog/*, destination: /}
+      - {type: redirect, source: /projects/kitchen-and-marble-bathroom-renovation/*, destination: /projects/west-village-marble-kitchen-bathroom-renovation/}
+      - {type: redirect, source: /projects/kitchen-and-marble-bathroom-renovation, destination: /projects/west-village-marble-kitchen-bathroom-renovation/}
