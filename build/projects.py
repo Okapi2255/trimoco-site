@@ -203,3 +203,24 @@ sm=re.sub(r'<url><loc>[^<]*/projects/[^<]+/</loc>.*?</url>','',sm).replace('</ur
 open(OUT+'/sitemap.xml','w').write(sm)
 json.dump([{'slug':g[0],'title':g[1],'photos':[PH[i]['file'] for i in g[2]],'orig_titles':[PH[i]['title'] for i in g[2]]} for g in GROUPS],open(ROOT+'/build/project-groups.json','w'),indent=1)
 print(len(GROUPS),'project pages;',sum(1 for g in GROUPS if len(g[2])>1),'multi-photo')
+
+# ── keep <img> width/height in step with the real pixel aspect (after photo rotation fixes) ──
+def _fix_dims(html_s):
+    n=[0]
+    def rep(m):
+        tag=m.group(0); f=m.group(2)
+        try: W,H=Image.open(OUT+'/images/projects/'+m.group(1)+f).size
+        except Exception: return tag
+        mw=re.search(r' width="(\d+)"',tag); mh=re.search(r' height="(\d+)"',tag)
+        if not (mw and mh): return tag
+        w,h=int(mw.group(1)),int(mh.group(1))
+        if abs(w/h - W/H) < 0.02: return tag
+        nh=round(w*H/W) if W<H else h; nw=w if W<H else round(h*W/H)
+        n[0]+=1
+        return tag.replace(mw.group(0),f' width="{nw}"',1).replace(mh.group(0),f' height="{nh}"',1)
+    return re.sub(r'<img [^>]*?src="/images/projects/((?:thumbs/)?)([^"]+)"[^>]*>',rep,html_s), n[0]
+_tot=0
+for _f in glob.glob(OUT+'/**/*.html',recursive=True):
+    _s=open(_f).read(); _s2,_n=_fix_dims(_s)
+    if _n: open(_f,'w').write(_s2); _tot+=_n
+print('img dimension attrs corrected:',_tot)
