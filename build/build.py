@@ -40,10 +40,13 @@ FORM_PATCH_NEW='k||await window.trimocoSubmit(m,"Quote form")'
 CHAT_RE=re.compile(r"await fetch\(chatWidgetSubmitUrl, \{.*?\}\),\s*\}\);",re.S)
 
 def fix_reviews(s):
-    # Owner confirmed (Nov 2, 2026) the 3 Google reviews and 5.0 rating are real: keep them exactly as on the original.
-    # No Review/AggregateRating schema (Google ignores self-serving LocalBusiness review stars).
+    # Owner approved (Nov 17, 2026) updating the displayed Google review count to 11 at 5.0.
+    # Visible review cards stay as on the original; AggregateRating / Review schema live in public HTML.
     s=s.replace('What Nassau County homeowners <em class="italic text-accent">say.</em>','What our clients <em class="italic text-accent">say.</em>')
-    s=s.replace('<span class="text-sm text-text-secondary">3 Google reviews</span>','<a href="'+GMAPS+'" target="_blank" rel="noopener" class="text-sm text-text-secondary underline underline-offset-2 hover:text-accent">3 Google reviews</a>')
+    reviews_link='<a href="'+GMAPS+'" target="_blank" rel="noopener" class="text-sm text-text-secondary underline underline-offset-2 hover:text-accent">11 Google reviews</a>'
+    s=s.replace('<span class="text-sm text-text-secondary">3 Google reviews</span>', reviews_link)
+    s=s.replace('<span class="text-sm text-text-secondary">11 Google reviews</span>', reviews_link)
+    s=s.replace('>3 Google reviews</a>', '>11 Google reviews</a>')
     s=s.replace(' aria-label="Top-rated by local clients — jump to client reviews"','')
     return s
 
