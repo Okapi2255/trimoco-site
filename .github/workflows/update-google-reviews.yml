@@ -1,6 +1,7 @@
-# Prepared only. Do not merge to main until GOOGLE_PLACES_API_KEY is set.
-# Scheduled workflows run only from the default branch, so this file is inert
-# on feat/google-reviews-auto-update. The job also no-ops without the key.
+# Daily Places API refresh of trimoco.com Google reviews.
+# The Python script no-ops if GOOGLE_PLACES_API_KEY is unset.
+# Do not use the secrets context in job/step `if:` — GitHub rejects it
+# on workflow_dispatch ("Unrecognized named-value: 'secrets'").
 name: Update Google reviews
 
 on:
@@ -15,7 +16,6 @@ jobs:
   update:
     name: Fetch Place Details and update the static reviews
     runs-on: ubuntu-latest
-    if: ${{ secrets.GOOGLE_PLACES_API_KEY != '' }}
     steps:
       - name: Check out the site
         uses: actions/checkout@v4
@@ -42,11 +42,15 @@ jobs:
           git commit -m "Update Google reviews from Places API"
           git push
 
-      # The Render static service currently has autoDeploy=yes on main, so a
-      # push should deploy by itself. Set RENDER_DEPLOY_HOOK_URL only if
-      # autodeploy is turned off. The hook URL is a secret; do not echo it.
+      # Autodeploy on main has not been reliable (recent deploys were API-triggered).
+      # Set RENDER_DEPLOY_HOOK_URL to force a Render deploy after a reviews commit.
+      # The hook URL is a secret; do not echo it.
       - name: Trigger Render deploy hook if configured
-        if: ${{ secrets.RENDER_DEPLOY_HOOK_URL != '' }}
         env:
           RENDER_DEPLOY_HOOK_URL: ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
-        run: curl -fsS -X POST "$RENDER_DEPLOY_HOOK_URL" >/dev/null
+        run: |
+          if [ -z "$RENDER_DEPLOY_HOOK_URL" ]; then
+            echo "RENDER_DEPLOY_HOOK_URL is not set; skipping hook (rely on Render autodeploy or a manual deploy)."
+            exit 0
+          fi
+          curl -fsS -X POST "$RENDER_DEPLOY_HOOK_URL" >/dev/null
