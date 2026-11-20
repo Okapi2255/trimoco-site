@@ -218,6 +218,38 @@
   padding: 1.5rem;
   background: var(--color-surface-raised, #fff);
 }
+.design-hero-call {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+  white-space: nowrap;
+}
+.design-hero-call:hover, .design-hero-call:focus-visible {
+  color: var(--color-accent-light, #f3d2a8);
+  outline: none;
+}
+.design-roger-contact {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.85rem;
+  margin-top: 1.5rem;
+}
+.design-roger-email {
+  font-size: 1.0625rem;
+  line-height: 1.5;
+}
+.design-roger-email a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+  font-weight: 700;
+}
+.design-roger-email a:hover, .design-roger-email a:focus-visible {
+  color: var(--color-accent, #b45309);
+}
 </style>
 <script type="application/ld+json">{"@context": "https://schema.org","@type": "BreadcrumbList","itemListElement": [{"@type": "ListItem","position": 1,"name": "Home","item": "https://www.trimoco.com/"},{"@type": "ListItem","position": 2,"name": "Interior Design","item": "https://www.trimoco.com/design/"}]}</script><script type="application/ld+json">{"@context": "https://schema.org","@type": "WebPage","@id": "https://www.trimoco.com/design/#webpage","url": "https://www.trimoco.com/design/","name": "Interior Design with Roger Bailey Interiors | Trimoco LLC","description": "Roger Bailey Interiors leads interior design for kitchens, baths, and full remodels in Manhattan. Trimoco Construction is the construction partner behind the work. Request a design estimate.","isPartOf": {"@type": "WebSite","name": "Trimoco LLC","url": "https://www.trimoco.com/"},"about": {"@type": "ProfessionalService","name": "Roger Bailey Interiors","description": "Roger Bailey Interiors is a design/build construction firm in Manhattan. We specialize in quality kitchens, baths and full remodels.","areaServed": {"@type": "AdministrativeArea","name": "Manhattan, New York"},"sameAs": ["https://www.instagram.com/rogerbaileyinteriors"],"url": "https://www.trimoco.com/design/"}}</script>
 <style>
@@ -301,6 +333,7 @@ Contact
           <div class="flex items-center gap-3 flex-wrap">
             <h1 class="design-hero-name font-heading text-text-on-dark">Roger Bailey Interiors</h1>
             <a class="design-ig" href="https://www.instagram.com/rogerbaileyinteriors" target="_blank" rel="noopener noreferrer" aria-label="Roger Bailey Interiors on Instagram"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><circle cx="12" cy="12" r="5"></circle><circle cx="17.5" cy="6.5" r="1.15" fill="currentColor" stroke="none"></circle></svg></a>
+            <a class="design-hero-call" href="tel:+19172397075">Call Roger: (917) 239-7075</a>
           </div>
           <blockquote class="design-hero-bio text-text-on-dark">“Roger Bailey Interiors is a design/build construction firm in Manhattan. We specialize in quality kitchens, baths and full remodels.”</blockquote>
         </div>
@@ -778,7 +811,11 @@ Contact
       <div>
         <span class="section-label">Get in touch</span>
         <h2 id="design-estimate-heading" class="font-heading text-[clamp(1.5rem,3vw,2rem)] font-bold leading-[1.2] text-text mb-4">Request a design estimate</h2>
-        <p class="text-[1.0625rem] leading-[1.65] text-text max-w-[50ch] m-0">Tell us about the kitchen, bath, or remodel you have in mind. A member of the design team will follow up. This form is for design inquiries on this page.</p>
+        <p class="text-[1.0625rem] leading-[1.65] text-text max-w-[50ch] m-0">Tell us about the kitchen, bath, or remodel you have in mind. Call or email Roger directly, or send a design estimate request with the form. This form is for design inquiries on this page.</p>
+        <div class="design-roger-contact">
+          <a href="tel:+19172397075" class="btn-primary py-3 px-6 text-sm">Call Roger: (917) 239-7075</a>
+          <p class="design-roger-email m-0">Email Roger: <a href="mailto:rogerinny@gmail.com">rogerinny@gmail.com</a></p>
+        </div>
       </div>
       <div class="lead-form rounded-xl p-[clamp(1.5rem,4vw,2.25rem)] bg-surface-raised border border-border shadow-sm" data-design-lead-form>
         <div class="mb-6 flex flex-col items-center text-center" data-lead-form-heading>
@@ -815,7 +852,7 @@ Contact
           <p class="text-sm text-text-muted">We'll be in touch shortly.</p>
         </div>
         <div class="pt-3 text-sm text-text-muted" data-lead-form-error role="alert" hidden>
-          Something went wrong sending this request. Please try again, or call Trimoco at <a href="tel:+15167871045" class="underline">(516) 787-1045</a>.
+          Something went wrong sending this request. Please try again, or <a href="tel:+19172397075" class="underline">call Roger: (917) 239-7075</a>, or email <a href="mailto:rogerinny@gmail.com">rogerinny@gmail.com</a>.
         </div>
       </div>
     </div>
