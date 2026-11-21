@@ -61,8 +61,17 @@
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
+  touch-action: pan-x pan-y;
   scrollbar-width: none;
   overscroll-behavior-x: contain;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.proj-gallery__track.is-dragging {
+  cursor: grabbing;
+  scroll-snap-type: none;
+  scroll-behavior: auto;
 }
 .proj-gallery__track::-webkit-scrollbar { display: none; }
 .proj-gallery__slide {
@@ -78,7 +87,10 @@
   padding: 0;
   border: 0;
   background: none;
-  cursor: zoom-in;
+  cursor: grab;
+}
+.proj-gallery__track.is-dragging .proj-gallery__open {
+  cursor: grabbing;
 }
 .proj-gallery__slide img {
   display: block;
@@ -86,6 +98,10 @@
   height: auto;
   aspect-ratio: 4 / 3;
   object-fit: cover;
+  -webkit-user-drag: none;
+  user-select: none;
+  -webkit-user-select: none;
+  pointer-events: none;
 }
 .proj-gallery__nav {
   display: none;
@@ -171,13 +187,20 @@
   align-items: center;
   justify-content: center;
   position: relative;
+  touch-action: none;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
 }
+.fs-stage.is-dragging { cursor: grabbing; }
 .fs-stage img {
   max-width: min(96vw, 1400px);
   max-height: calc(100vh - 8rem);
   width: auto;
   height: auto;
   object-fit: contain;
+  -webkit-user-drag: none;
+  pointer-events: none;
 }
 .fs-nav {
   position: absolute;

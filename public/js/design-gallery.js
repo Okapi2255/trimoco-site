@@ -1,14 +1,14 @@
-/* Horizontal swipe galleries for the /design/ page. No external library.
-   Mobile: CSS scroll-snap + touch swipe.
-   Desktop: prev/next buttons and dots.
-   Keyboard arrows when the gallery is focused.
-   Click a slide to open a full-screen viewer. */
+/* Horizontal swipe galleries for the /designer/ page. No external library.
+   Mobile: CSS scroll-snap + native touch swipe.
+   Desktop: mouse click-and-drag, prev/next buttons, and dots.
+   Trackpad: native overflow scroll with CSS scroll-snap.
+   Keyboard arrows when the gallery or fullscreen viewer is focused.
+   Click a slide (without a drag) to open a full-screen viewer;
+   swipe or drag in the viewer to change photos. */
 (function () {
   var galleries = [];
-
-  function prefersDesktop() {
-    return window.matchMedia("(min-width: 1024px)").matches;
-  }
+  var DRAG_THRESHOLD = 8;
+  var FS_SWIPE_THRESHOLD = 50;
 
   function closestSlideIndex(track) {
     var slides = track.querySelectorAll("[data-gallery-slide]");
@@ -31,7 +31,12 @@
     if (!n) return;
     var i = ((index % n) + n) % n;
     g.index = i;
-    g.slides[i].scrollIntoView({ behavior: behavior || "smooth", block: "nearest", inline: "start" });
+    var left = g.slides[i].offsetLeft;
+    if (typeof g.track.scrollTo === "function") {
+      g.track.scrollTo({ left: left, behavior: behavior || "smooth" });
+    } else {
+      g.slides[i].scrollIntoView({ behavior: behavior || "smooth", block: "nearest", inline: "start" });
+    }
     sync(g);
   }
 
@@ -78,6 +83,77 @@
     document.documentElement.style.overflow = "";
   }
 
+  function isMouseLike(e) {
+    return e.pointerType === "mouse" || e.pointerType === "pen";
+  }
+
+  function bindTrackDrag(g) {
+    var track = g.track;
+    var startX = 0;
+    var startLeft = 0;
+    var pointerId = null;
+    var armed = false;
+    var dragging = false;
+
+    track.addEventListener("dragstart", function (e) { e.preventDefault(); }, true);
+    track.querySelectorAll("img").forEach(function (img) {
+      img.setAttribute("draggable", "false");
+    });
+
+    track.addEventListener("pointerdown", function (e) {
+      if (!isMouseLike(e) || e.button !== 0) return;
+      if (e.target.closest("[data-gallery-prev],[data-gallery-next],[data-gallery-dot]")) return;
+      armed = true;
+      dragging = false;
+      g.suppressClick = false;
+      startX = e.clientX;
+      startLeft = track.scrollLeft;
+      pointerId = e.pointerId;
+    });
+
+    track.addEventListener("pointermove", function (e) {
+      if (!armed || e.pointerId !== pointerId) return;
+      var dx = e.clientX - startX;
+      if (!dragging) {
+        if (Math.abs(dx) < DRAG_THRESHOLD) return;
+        dragging = true;
+        g.suppressClick = true;
+        track.classList.add("is-dragging");
+        try { track.setPointerCapture(pointerId); } catch (err) {}
+      }
+      e.preventDefault();
+      track.scrollLeft = startLeft - dx;
+    }, { passive: false });
+
+    function endDrag(e) {
+      if (!armed || (e && pointerId != null && e.pointerId !== pointerId)) return;
+      armed = false;
+      if (dragging) {
+        track.classList.remove("is-dragging");
+        if (pointerId != null) {
+          try { track.releasePointerCapture(pointerId); } catch (err) {}
+        }
+        goTo(g, closestSlideIndex(track), "smooth");
+        setTimeout(function () { g.suppressClick = false; }, 0);
+      }
+      dragging = false;
+      pointerId = null;
+    }
+
+    track.addEventListener("pointerup", endDrag);
+    track.addEventListener("pointercancel", endDrag);
+    track.addEventListener("lostpointercapture", function () {
+      if (armed && dragging) {
+        armed = false;
+        track.classList.remove("is-dragging");
+        goTo(g, closestSlideIndex(track), "smooth");
+        setTimeout(function () { g.suppressClick = false; }, 0);
+        dragging = false;
+        pointerId = null;
+      }
+    });
+  }
+
   function bind(root) {
     var track = root.querySelector("[data-gallery-track]");
     if (!track) return;
@@ -95,7 +171,8 @@
       fsCaption: document.querySelector("#design-gallery-fs [data-fs-caption]"),
       fsClose: document.querySelector("#design-gallery-fs [data-fs-close]"),
       label: root.getAttribute("data-project-label") || "Project photo",
-      index: 0
+      index: 0,
+      suppressClick: false
     };
     galleries.push(g);
 
@@ -125,9 +202,16 @@
       }
     });
 
+    bindTrackDrag(g);
+
     g.slides.forEach(function (slide) {
       var btn = slide.querySelector("[data-gallery-open]") || slide;
       btn.addEventListener("click", function (e) {
+        if (g.suppressClick) {
+          e.preventDefault();
+          e.stopPropagation();
+          return;
+        }
         if (e.target.closest("[data-gallery-prev],[data-gallery-next],[data-gallery-dot]")) return;
         openFullscreen(g);
       });
@@ -138,29 +222,85 @@
 
   document.querySelectorAll("[data-project-gallery]").forEach(bind);
 
+  function activeGallery() {
+    return galleries.filter(function (g) { return g.root.getAttribute("data-fullscreen-open") === "true"; })[0];
+  }
+
+  function bindFsSwipe(fs) {
+    var stage = fs.querySelector(".fs-stage");
+    if (!stage) return;
+    var startX = 0;
+    var startY = 0;
+    var pointerId = null;
+    var armed = false;
+    var dragging = false;
+
+    stage.addEventListener("dragstart", function (e) { e.preventDefault(); }, true);
+    var fsImg = stage.querySelector("img");
+    if (fsImg) fsImg.setAttribute("draggable", "false");
+
+    stage.addEventListener("pointerdown", function (e) {
+      if (e.target.closest("[data-fs-prev],[data-fs-next],[data-fs-close]")) return;
+      if (e.button && e.button !== 0) return;
+      armed = true;
+      dragging = false;
+      pointerId = e.pointerId;
+      startX = e.clientX;
+      startY = e.clientY;
+      try { stage.setPointerCapture(pointerId); } catch (err) {}
+    });
+
+    stage.addEventListener("pointermove", function (e) {
+      if (!armed || e.pointerId !== pointerId) return;
+      var dx = e.clientX - startX;
+      if (!dragging && Math.abs(dx) >= DRAG_THRESHOLD) {
+        dragging = true;
+        stage.classList.add("is-dragging");
+      }
+    });
+
+    function endSwipe(e) {
+      if (!armed || (e && pointerId != null && e.pointerId !== pointerId)) return;
+      armed = false;
+      stage.classList.remove("is-dragging");
+      var dx = e.clientX - startX;
+      var dy = e.clientY - startY;
+      var wasDrag = dragging;
+      dragging = false;
+      pointerId = null;
+      if (!wasDrag) return;
+      if (Math.abs(dx) < FS_SWIPE_THRESHOLD || Math.abs(dx) < Math.abs(dy)) return;
+      var g = activeGallery();
+      if (!g) return;
+      if (dx < 0) goTo(g, g.index + 1);
+      else goTo(g, g.index - 1);
+    }
+
+    stage.addEventListener("pointerup", endSwipe);
+    stage.addEventListener("pointercancel", endSwipe);
+  }
+
   var fs = document.getElementById("design-gallery-fs");
   if (fs) {
-    var active = function () {
-      return galleries.filter(function (g) { return g.root.getAttribute("data-fullscreen-open") === "true"; })[0];
-    };
+    bindFsSwipe(fs);
     fs.querySelectorAll("[data-fs-close]").forEach(function (btn) {
       btn.addEventListener("click", function () {
-        var g = active();
+        var g = activeGallery();
         if (g) closeFullscreen(g);
       });
     });
     fs.addEventListener("click", function (e) {
       if (e.target === fs) {
-        var g = active();
+        var g = activeGallery();
         if (g) closeFullscreen(g);
       }
     });
     var prev = fs.querySelector("[data-fs-prev]");
     var next = fs.querySelector("[data-fs-next]");
-    if (prev) prev.addEventListener("click", function () { var g = active(); if (g) goTo(g, g.index - 1); });
-    if (next) next.addEventListener("click", function () { var g = active(); if (g) goTo(g, g.index + 1); });
+    if (prev) prev.addEventListener("click", function () { var g = activeGallery(); if (g) goTo(g, g.index - 1); });
+    if (next) next.addEventListener("click", function () { var g = activeGallery(); if (g) goTo(g, g.index + 1); });
     fs.addEventListener("keydown", function (e) {
-      var g = active();
+      var g = activeGallery();
       if (!g) return;
       if (e.key === "ArrowLeft") { e.preventDefault(); goTo(g, g.index - 1); }
       else if (e.key === "ArrowRight") { e.preventDefault(); goTo(g, g.index + 1); }
