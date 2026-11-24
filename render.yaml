@@ -65,6 +65,8 @@ services:
       - {type: redirect, source: /projects/modern-kitchen-renovation-with-custom-cabinetry, destination: /projects/lindenhurst-ny-modern-kitchen-custom-cabinetry/}
       - {type: redirect, source: /services/general-contractor/painting-and-plaster/*, destination: /services/general-contractor/interior-painting/}
       - {type: redirect, source: /services/general-contractor/painting-and-plaster, destination: /services/general-contractor/interior-painting/}
+      - {type: redirect, source: /request-estimate, destination: /contact/}
+      - {type: redirect, source: /request-estimate/, destination: /contact/}
       - {type: redirect, source: /index.php, destination: /}
       - {type: redirect, source: /portfolio, destination: /projects/}
       - {type: redirect, source: /portfolio/, destination: /projects/}
