@@ -89,7 +89,7 @@ DW_GUIDE={
   'Fire-rated and sound-reducing wall assemblies where the building or code calls for them',
  ],
 }
-DW_RELATED=['chelsea-manhattan-bathroom-renovation','soho-manhattan-bathroom-walk-in-shower','chelsea-manhattan-window-seat-radiator-cover','chelsea-manhattan-double-closet-doors']
+DW_RELATED=['chelsea-manhattan-bathroom-renovation','soho-manhattan-bathroom-walk-in-shower','chelsea-manhattan-radiator-cover','chelsea-manhattan-double-closet-doors']
 DW_FAQS=[
  ('Do you do small drywall repairs?','Yes. We patch holes, cracks and nail pops, close up openings left by plumbers and electricians, and replace water-damaged sections. Small repairs are often paired with painting so the patch blends into the wall.'),
  ('What does drywall taping and finishing involve?','After the board is hung, the joints are covered with tape and several coats of joint compound, and each coat dries and is sanded before the next. This is what makes the seams and screws disappear, so taping and finishing usually takes a few days even in a small room.'),

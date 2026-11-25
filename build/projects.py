@@ -24,7 +24,7 @@ GROUPS=[
  ('90th-street-manhattan-bathroom-tile-renovation','90th Street, Manhattan: Master Bathroom Tile Renovation',[9,20,21]),
  ('astoria-queens-bathroom-renovation','Astoria, Queens: Complete Bathroom Renovation',[36]),
  ('chelsea-manhattan-bathroom-renovation','Chelsea, Manhattan: Bathroom Renovation (Framing and Cement Board)',[2,4]),
- ('chelsea-manhattan-window-seat-radiator-cover','Chelsea, Manhattan: Window Seat with Built-In Radiator Cover',[22]),
+ ('chelsea-manhattan-radiator-cover','Chelsea, Manhattan: Custom Radiator Cover',[22]),
  ('chelsea-manhattan-double-closet-doors','Chelsea, Manhattan: Double Closet Door Installation',[30]),
  ('hells-kitchen-manhattan-modern-kitchen-renovation',"Hell's Kitchen, Manhattan: Modern Kitchen Renovation",[39]),
  ('upper-west-side-contemporary-kitchen-custom-cabinetry','Upper West Side, Manhattan: Contemporary Kitchen with Custom Cabinetry',[44]),
@@ -47,7 +47,7 @@ UWS='upper-west-side-west-end-avenue-kitchen-renovation'
 # owner-confirmed locations (Nov 2, 2026); street numbers intentionally not published
 SOHO='soho-manhattan-bathroom-walk-in-shower'; E90='90th-street-manhattan-bathroom-tile-renovation'; AST='astoria-queens-bathroom-renovation'
 CH_A='chelsea-manhattan-kitchen-cabinetry-backsplash'; CH_B='chelsea-manhattan-green-kitchen-cabinetry'; MAN_C='manhattan-blue-kitchen-custom-cabinetry'
-CH_G='chelsea-manhattan-bathroom-renovation'; CH_H='chelsea-manhattan-window-seat-radiator-cover'; CH_I='chelsea-manhattan-double-closet-doors'
+CH_G='chelsea-manhattan-bathroom-renovation'; CH_H='chelsea-manhattan-radiator-cover'; CH_I='chelsea-manhattan-double-closet-doors'
 HK='hells-kitchen-manhattan-modern-kitchen-renovation'; UWS_K='upper-west-side-contemporary-kitchen-custom-cabinetry'; LIN='lindenhurst-ny-modern-kitchen-custom-cabinetry'
 LOC={WV:'West Village, Manhattan',UWS:'Upper West Side, Manhattan',SOHO:'SoHo, Manhattan',E90:'90th Street, Manhattan',AST:'Astoria, Queens',
      CH_A:'Chelsea, Manhattan',CH_B:'Chelsea, Manhattan',MAN_C:'Manhattan, NY',CH_G:'Chelsea, Manhattan',CH_H:'Chelsea, Manhattan',CH_I:'Chelsea, Manhattan',
@@ -61,7 +61,7 @@ DESC={WV:'walnut and white kitchen cabinetry, marble slab counters and a marble 
       SOHO:'a bathroom with large-format tile, a glass walk-in shower and a freestanding tub, a kitchen with a marble waterfall island, built-in shelving and closets, and light wood floors',
       E90:'ribbed green-gray wall tile and a shower with built-in niches',AST:'white subway tile, a bathtub with shower and a wood vanity',
       CH_A:'kitchen cabinetry and a new backsplash',CH_B:'green custom kitchen cabinetry',MAN_C:'blue custom cabinetry and a stone backsplash',
-      CH_G:'a finished bathroom with white subway tile, a glass shower and a chrome towel warmer, plus in-progress framing and cement board',CH_H:'a painted window seat with a built-in radiator cover',
+      CH_G:'a finished bathroom with white subway tile, a glass shower and a chrome towel warmer, plus in-progress framing and cement board',CH_H:'a custom radiator cover',
       CH_I:'white double closet doors with recessed panels',HK:'white cabinets, marble counters and stainless steel appliances',
       UWS_K:'cream custom cabinetry, white counters, a gas range and brass fixtures',LIN:'white cabinets, a marble island, stainless steel appliances and pendant lights'}
 # accurate alts / titles for photos whose original captions were wrong
@@ -69,6 +69,7 @@ PH[4]['alt']='Shower walls in cement board with a recessed niche opening, during
 PH[25]['alt']='White built-in shelving and closets in a hallway, with a view into the bathroom'
 PH[30]['alt']='White double closet doors with recessed panels and chrome handles'; PH[30]['title']='Double Closet Door Installation'
 PH[29]['title']='Modern Kitchen with Marble Waterfall Island'
+PH[22]['alt']='Cream-painted custom radiator cover'; PH[22]['title']='Custom Radiator Cover'
 # owner (Nov 25, 2026): all five Chelsea jobs were residential apartments, not commercial
 PH[11]['alt']='Modern suspended ceiling with recessed lights, drywall walls, and wood paneling in a residential apartment'
 PH[18]['alt']='Kitchen with stainless steel equipment, recessed lighting, and wood accent wall in a residential apartment'
@@ -81,7 +82,7 @@ for i,p in enumerate(PH):
     if p['file'] in LOCFILE: p['alt']=p['alt']+', '+LOCFILE[p['file']]
 PHALT={p['file']:p['alt'] for p in PH}
 # old wrong captions anywhere else (e.g. JSON-LD captions, figcaptions)
-ALT_FIX={OLD_ALT[i]:PH[i]['alt'] for i in (4,25,30,11,18)}
+ALT_FIX={OLD_ALT[i]:PH[i]['alt'] for i in (4,25,30,11,18,22)}
 # thumbnails (640px wide) for gallery grids
 os.makedirs(OUT+'/images/projects/thumbs',exist_ok=True)
 DIM={}
@@ -261,8 +262,9 @@ for d in glob.glob(OUT+'/projects/*/'):
 for _f in glob.glob(OUT+'/**/*.html',recursive=True):
     _s=open(_f).read(); _s0=_s
     for o_,n_ in ALT_FIX.items(): _s=_s.replace(esc(o_),esc(n_)).replace(o_,n_)
-    if OLD_T[18]!=PH[18]['title']:
-        _s=_s.replace(esc(OLD_T[18]),esc(PH[18]['title'])).replace(OLD_T[18],PH[18]['title'])
+    for _i in (18,22):
+        if OLD_T[_i]!=PH[_i]['title']:
+            _s=_s.replace(esc(OLD_T[_i]),esc(PH[_i]['title'])).replace(OLD_T[_i],PH[_i]['title'])
     if _s!=_s0: open(_f,'w').write(_s)
 # make every project photo elsewhere on the site link to its project page
 def linkify(s):

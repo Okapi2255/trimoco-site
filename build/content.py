@@ -222,7 +222,7 @@ SERVICES = [
     "Final walkthrough and touch-ups before we call the job done",
    ],
   },
-  "related": ["soho-manhattan-bathroom-walk-in-shower","west-village-marble-kitchen-bathroom-renovation","chelsea-manhattan-double-closet-doors","chelsea-manhattan-window-seat-radiator-cover"],
+  "related": ["soho-manhattan-bathroom-walk-in-shower","west-village-marble-kitchen-bathroom-renovation","chelsea-manhattan-double-closet-doors","chelsea-manhattan-radiator-cover"],
   "faqs": [
    ("How long does it take to paint a Manhattan apartment?", "It depends on the size of the apartment, the condition of the walls and how much prep they need. Walls with cracked plaster or old patches take longer than walls in good shape. We give you a written scope and schedule with the estimate."),
    ("Does my co-op or condo need to approve painting?", "Painting is cosmetic work that usually does not need a Department of Buildings permit, but many buildings still want notice, a certificate of insurance and work done within building hours. We check your building's rules and provide the certificate of insurance it asks for."),
@@ -265,7 +265,7 @@ SERVICES = [
     "Surfaces primed and ready for paint",
    ],
   },
-  "related": ["soho-manhattan-bathroom-walk-in-shower","chelsea-manhattan-window-seat-radiator-cover","west-village-marble-kitchen-bathroom-renovation","upper-west-side-west-end-avenue-kitchen-renovation"],
+  "related": ["soho-manhattan-bathroom-walk-in-shower","chelsea-manhattan-radiator-cover","west-village-marble-kitchen-bathroom-renovation","upper-west-side-west-end-avenue-kitchen-renovation"],
   "faqs": [
    ("What is skim coating?", "Skim coating means troweling thin layers of plaster or joint compound over an entire wall or ceiling, then smoothing it, so cracks, old patches and uneven areas disappear under one even surface. It is a common way to restore pre-war walls without tearing them out."),
    ("Should I repair my plaster walls or replace them with drywall?", "If the plaster is still mostly bonded to the lath, repairing and skim coating it is usually less messy and keeps the character of the room. If large areas are loose, crumbling or water-damaged, replacing those sections with drywall or veneer plaster can make more sense. We look at the walls and recommend one or the other at the estimate."),

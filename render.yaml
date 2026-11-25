@@ -53,8 +53,10 @@ services:
       - {type: redirect, source: /projects/custom-drywall-and-built-in-shelving, destination: /projects/soho-manhattan-bathroom-walk-in-shower/}
       - {type: redirect, source: /projects/drywall-installation-and-framing/*, destination: /projects/chelsea-manhattan-bathroom-renovation/}
       - {type: redirect, source: /projects/drywall-installation-and-framing, destination: /projects/chelsea-manhattan-bathroom-renovation/}
-      - {type: redirect, source: /projects/custom-window-seat-with-built-in-radiator-cover/*, destination: /projects/chelsea-manhattan-window-seat-radiator-cover/}
-      - {type: redirect, source: /projects/custom-window-seat-with-built-in-radiator-cover, destination: /projects/chelsea-manhattan-window-seat-radiator-cover/}
+      - {type: redirect, source: /projects/custom-window-seat-with-built-in-radiator-cover/*, destination: /projects/chelsea-manhattan-radiator-cover/}
+      - {type: redirect, source: /projects/custom-window-seat-with-built-in-radiator-cover, destination: /projects/chelsea-manhattan-radiator-cover/}
+      - {type: redirect, source: /projects/chelsea-manhattan-window-seat-radiator-cover/*, destination: /projects/chelsea-manhattan-radiator-cover/}
+      - {type: redirect, source: /projects/chelsea-manhattan-window-seat-radiator-cover, destination: /projects/chelsea-manhattan-radiator-cover/}
       - {type: redirect, source: /projects/garage-door-installation/*, destination: /projects/chelsea-manhattan-double-closet-doors/}
       - {type: redirect, source: /projects/garage-door-installation, destination: /projects/chelsea-manhattan-double-closet-doors/}
       - {type: redirect, source: /projects/modern-kitchen-renovation/*, destination: /projects/hells-kitchen-manhattan-modern-kitchen-renovation/}

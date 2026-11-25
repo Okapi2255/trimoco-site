@@ -87,9 +87,15 @@ def publish_chelsea_page(s):
                 '<span class="section-label section-label-dark">Service Area</span>',1)
     return s
 
+# Owner correction (Nov 25, 2026): this job is a custom radiator cover only — not a window seat.
+# Rewrite any leftover old slug so a later rebuild cannot restore it.
+OLD_RAD_SLUG='chelsea-manhattan-window-seat-radiator-cover'
+NEW_RAD_SLUG='chelsea-manhattan-radiator-cover'
+
 n=0
 for f in glob.glob(OUT+'/**/*.html',recursive=True):
     s=open(f).read(); o=s
+    s=s.replace('/projects/'+OLD_RAD_SLUG,'/projects/'+NEW_RAD_SLUG)
     rel=os.path.relpath(f,OUT)
     if rel=='areas/chelsea-manhattan/index.html':
         s=publish_chelsea_page(s)
