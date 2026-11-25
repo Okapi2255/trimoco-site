@@ -172,7 +172,7 @@ def common(s,path):
             d['areaServed']=[a for a in d['areaServed'] if a['name'] not in ('East Hamptons, NY','West Hamptons, NY')]+[{"@type":"Place","name":n} for n in ['The Hamptons, NY','East Hampton, NY','Westhampton, NY','Westhampton Beach, NY','Southampton, NY'] if n not in names]
             if 'Nassau County, NY' not in names: d['areaServed'].append({"@type":"AdministrativeArea","name":"Nassau County, NY"})
             d['description']=d['description'].replace('Manhattan, Brooklyn, Queens, Long Island','Manhattan, Brooklyn, Queens, the Bronx, Long Island')
-            # TODO(owner): add "sameAs": [Google Business Profile URL, Facebook, Instagram, Houzz, Yelp]
+            d["sameAs"]=['https://www.instagram.com/trimoco_/', 'https://www.facebook.com/trimococonstruction/']
         elif isinstance(d.get('areaServed'),list) and any(a.get('name')=='East Hamptons, NY' for a in d['areaServed']):
             d['areaServed']=[a for a in d['areaServed'] if a['name'] not in ('East Hamptons, NY','West Hamptons, NY')]+[{"@type":"Place","name":n} for n in ['The Hamptons, NY','East Hampton, NY','Westhampton, NY','Westhampton Beach, NY','Southampton, NY']]
         return '<script type="application/ld+json">'+json.dumps(d,ensure_ascii=False)+'</script>'

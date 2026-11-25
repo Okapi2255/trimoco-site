@@ -60,6 +60,7 @@ Trimoco has operated since 2021. Hours are Monday-Saturday, 8:00 AM to 6:00 PM; 
 
 ## Guides
 
+- [Renovation guides](https://www.trimoco.com/guides/): Hub listing every live Trimoco guide, including kitchen and bathroom remodel costs, NYC gut renovation cost, kitchen and bath permits, electrical panel upgrades, and planning a 2027 Manhattan apartment kitchen.
 - [NYC gut renovation cost](https://www.trimoco.com/guides/nyc-gut-renovation-cost/): 2026 public market averages for NYC apartment gut renovations, including soft costs and co-op board factors.
 - [NYC kitchen and bath permits](https://www.trimoco.com/guides/nyc-bathroom-kitchen-remodel-permits/): When NYC DOB permits are required for kitchen and bath remodels, what counts as cosmetic, and how board approval is separate.
 - [Kitchen remodel cost in Manhattan](https://www.trimoco.com/guides/kitchen-remodel-cost-manhattan/): Published market averages for Manhattan kitchen remodels, with comparisons for Brooklyn, Long Island, and the Hamptons.
