@@ -95,9 +95,9 @@ AREAS = {
  },
  "long-island-ny": {
   "label": "Renovating on Long Island",
-  "h2": "Your local Long Island contractor, based in Farmingdale",
+  "h2": "Your local Long Island contractor, based in Lynbrook",
   "paras": [
-   "Trimoco LLC is based in Farmingdale, so jobs across Nassau and western Suffolk are close to home. We renovate kitchens and bathrooms, do full gut renovations, install flooring, tile, trim and molding, and handle painting, plaster, framing, roofing and electrical work for Long Island homeowners.",
+   "Trimoco LLC is based in Lynbrook, so jobs across Nassau and western Suffolk are close to home. We renovate kitchens and bathrooms, do full gut renovations, install flooring, tile, trim and molding, and handle painting, plaster, framing, roofing and electrical work for Long Island homeowners.",
    "On Long Island, building permits come from your town or incorporated village, not New York City. Rules differ between places like the Village of Lynbrook and the Town of Hempstead. We check what your project needs before work starts.",
   ],
   "list_title": "What we handle on Long Island",
@@ -110,7 +110,7 @@ AREAS = {
   "hoods_title": "Long Island communities we work in",
   "hoods": ["Farmingdale","Bethpage","Massapequa","Lynbrook","Rockville Centre","Valley Stream","Malverne","East Rockaway","Oceanside","Hewlett","Garden City","Baldwin","Freeport","Long Beach","Merrick"],
   "faqs": [
-   ("Where is Trimoco based on Long Island?", "We are based in Farmingdale, NY 11735, on Long Island."),
+   ("Where is Trimoco based on Long Island?", "We are based at 20 Concord St, Lynbrook, NY 11563, on Long Island."),
    ("Who issues building permits for Long Island renovations?", "Permits on Long Island come from your town or incorporated village, for example the Village of Lynbrook or the Town of Hempstead. We review your scope and tell you what is needed before we start."),
   ],
  },
@@ -210,7 +210,7 @@ SERVICES = [
    "h2": "Interior painting for Manhattan apartments, Hamptons homes and everything in between",
    "paras": [
     "In <a href=\"/areas/manhattan-ny/\">Manhattan</a> co-ops and condos, painting is usually the last trade in the apartment and the one everybody notices. We protect floors, cabinets and hallways, follow the building's work hours and elevator rules, and keep the apartment livable while we work. Pre-war walls often need <a href=\"/services/general-contractor/plaster-and-skim-coating/\">plaster repair or a skim coat</a> before paint, and new walls need proper <a href=\"/services/carpenter/drywall-and-framing/\">drywall taping and finishing</a>. We do both ourselves, so the paint goes on over a sound surface.",
-    "For second homes in <a href=\"/areas/hamptons/\">the Hamptons</a>, including <a href=\"/areas/east-hampton/\">East Hampton</a> and <a href=\"/areas/westhampton/\">Westhampton</a>, we schedule repaints for the off-season so the house is ready before summer. We also paint apartments and houses in <a href=\"/areas/brooklyn-ny/\">Brooklyn</a>, <a href=\"/areas/queens-ny/\">Queens</a>, <a href=\"/areas/bronx-ny/\">the Bronx</a> and across <a href=\"/areas/long-island-ny/\">Long Island</a>, working from our base in Farmingdale.",
+    "For second homes in <a href=\"/areas/hamptons/\">the Hamptons</a>, including <a href=\"/areas/east-hampton/\">East Hampton</a> and <a href=\"/areas/westhampton/\">Westhampton</a>, we schedule repaints for the off-season so the house is ready before summer. We also paint apartments and houses in <a href=\"/areas/brooklyn-ny/\">Brooklyn</a>, <a href=\"/areas/queens-ny/\">Queens</a>, <a href=\"/areas/bronx-ny/\">the Bronx</a> and across <a href=\"/areas/long-island-ny/\">Long Island</a>, working from our base in Lynbrook.",
    ],
    "list_title": "What an interior paint job includes",
    "bullets": [
@@ -227,7 +227,7 @@ SERVICES = [
    ("How long does it take to paint a Manhattan apartment?", "It depends on the size of the apartment, the condition of the walls and how much prep they need. Walls with cracked plaster or old patches take longer than walls in good shape. We give you a written scope and schedule with the estimate."),
    ("Does my co-op or condo need to approve painting?", "Painting is cosmetic work that usually does not need a Department of Buildings permit, but many buildings still want notice, a certificate of insurance and work done within building hours. We check your building's rules and provide the certificate of insurance it asks for."),
    ("Do you repair walls before painting?", "Yes. We patch holes, dents and nail pops, repair cracked plaster, skim coat rough walls and fix damaged drywall before we paint. Painting over damage only hides it for a while."),
-   ("Do you paint homes in the Hamptons and on Long Island?", "Yes. We paint second homes in the Hamptons, including East Hampton and Westhampton, and houses across Long Island. We are based in Farmingdale and can schedule Hamptons work for the off-season."),
+   ("Do you paint homes in the Hamptons and on Long Island?", "Yes. We paint second homes in the Hamptons, including East Hampton and Westhampton, and houses across Long Island. We are based in Lynbrook and can schedule Hamptons work for the off-season."),
    ("Are you licensed for home improvement work in NYC?", "Yes. Trimoco LLC holds NYC Department of Consumer and Worker Protection Home Improvement Contractor License #2114773-DCA."),
   ],
  },
@@ -278,8 +278,8 @@ SERVICES = [
   "slug": "roofing",
   "name": "Roofing",
   "title": "Roofing Repair & Replacement on Long Island & NYC | Trimoco LLC",
-  "desc": "Roof repair and replacement for homes on Long Island and in NYC from Trimoco LLC in Farmingdale, NY. Free estimates: (516) 787-1045.",
-  "lead": "Trimoco LLC repairs and replaces roofs for homeowners on Long Island and in New York City, working from our base in Farmingdale.",
+  "desc": "Roof repair and replacement for homes on Long Island and in NYC from Trimoco LLC in Lynbrook, NY. Free estimates: (516) 787-1045.",
+  "lead": "Trimoco LLC repairs and replaces roofs for homeowners on Long Island and in New York City, working from our base in Lynbrook.",
   "img": "/images/services/custom-home-construction.webp",
   "img_alt": "Residential home construction project",
   "benefits": [

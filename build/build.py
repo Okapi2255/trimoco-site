@@ -29,8 +29,8 @@ PAGE_META={
  'areas/brooklyn-ny': (None,'Brooklyn brownstone, row house and co-op renovations: kitchens, bathrooms, plaster, trim and flooring. Free estimates: (516) 787-1045.'),
  'areas/queens-ny': (None,'Kitchen, bathroom and whole-home renovations for Queens houses, co-ops and condos. Free estimates from Trimoco LLC: (516) 787-1045.'),
  'areas/bronx-ny': (None,'Kitchen, bathroom, plaster and flooring renovations for Bronx co-ops, condos and homes. Free estimates from Trimoco LLC: (516) 787-1045.'),
- 'areas/long-island-ny': ('General Contractor in Long Island & Nassau County | Trimoco LLC','Farmingdale-based general contractor for Nassau County and Long Island: kitchens, bathrooms, gut renovations, roofing. Free estimates: (516) 787-1045.'),
- 'about': (None,'Trimoco LLC is a Farmingdale, NY general contractor serving Manhattan, Brooklyn, Queens, the Bronx and Long Island since 2021. Call (516) 787-1045.'),
+ 'areas/long-island-ny': ('General Contractor in Long Island & Nassau County | Trimoco LLC','Lynbrook-based general contractor for Nassau County and Long Island: kitchens, bathrooms, gut renovations, roofing. Free estimates: (516) 787-1045.'),
+ 'about': (None,'Trimoco LLC is a Lynbrook, NY general contractor serving Manhattan, Brooklyn, Queens, the Bronx and Long Island since 2021. Call (516) 787-1045.'),
  'projects': ('Renovation Projects in NYC & Long Island | Trimoco LLC',None),
 }
 NOINDEX={'thank-you','marketing-form','discount','review','blog'}
@@ -116,7 +116,7 @@ def guide_section(g,related=()):
     return (f'<!-- ─── SERVICE GUIDE (added for SEO) ─── --> <section class="section-pad bg-surface" aria-labelledby="svc-guide-heading"> <div class="container-site"> <div class="max-w-[820px] reveal"> <span class="section-label">{esc(g["label"])}</span> '
             f'<h2 id="svc-guide-heading" class="font-heading text-[clamp(1.75rem,_4vw,_2.5rem)] font-bold mb-3">{esc(g["h2"])}</h2> <span class="accent-bar"></span> <div class="mt-6 flex flex-col gap-4 mb-8">{paras}</div> '
             f'<div class="flex flex-col gap-3 mb-10 p-5 bg-surface-raised border border-border rounded-xl"> <h3 class="text-[1.0625rem] font-bold m-0">{esc(g["list_title"])}</h3> <ul class="list-none m-0 p-0 flex flex-col gap-2.5" role="list">{bullets}</ul> </div> </div> {rel} '
-            f'<p class="text-sm text-text-muted mt-6">{LICENSE}. Based in Farmingdale, NY.</p> </div> </section> ')
+            f'<p class="text-sm text-text-muted mt-6">{LICENSE}. Based in Lynbrook, NY.</p> </div> </section> ')
 
 EXTRA_LINKS=[('/services/general-contractor/co-op-condo-renovation/','Co-op & Condo Renovation'),('/services/general-contractor/flooring-installation/','Flooring Installation'),('/services/general-contractor/tile-installation/','Tile Installation'),('/services/general-contractor/interior-painting/','Interior Painting'),('/services/general-contractor/plaster-and-skim-coating/','Plaster & Skim Coating'),('/services/carpenter/drywall-and-framing/','Drywall Installation & Repair'),('/services/general-contractor/roofing/','Roofing')]
 
@@ -138,7 +138,7 @@ def common(s,path):
     s=s.replace('content="/images/og-home.webp"',f'content="{BASE}/images/og-home.jpg"')
     # facts
     s=s.replace('11653','11563')
-    s=s.replace('"latitude":40.654823,"longitude":-73.671799','"latitude":40.66296,"longitude":-73.68539')
+    s=s.replace('"latitude":40.654823,"longitude":-73.671799','"latitude":40.66305,"longitude":-73.68527')
     s=s.replace('across the panhandle','across NYC and Long Island')
     s=s.replace('20+ Years Building Trust','Serving NYC &amp; Long Island Since 2021')
     s=s.replace('>24/7 Emergency Service<','>Clean Job Sites<')
@@ -148,7 +148,7 @@ def common(s,path):
     # internal links: trailing slash
     s=re.sub(r'href="(/(?:services|areas|about|contact|projects|privacy|terms|review|blog|discount)[^"#?]*?)(?<!/)"',r'href="\1/"',s)
     # map embed without third-party API key
-    s=re.sub(r'<iframe src="https://www\.google\.com/maps/embed/v1/place\?[^"]*"','<iframe src="https://maps.google.com/maps?q=Farmingdale,+NY+11735&amp;output=embed"',s)
+    s=re.sub(r'<iframe src="https://www\.google\.com/maps/embed/v1/place\?[^"]*"','<iframe src="https://maps.google.com/maps?q=20+Concord+St,+Lynbrook,+NY+11563&amp;output=embed"',s)
     # forms
     s=s.replace('data-submit-url="https://api.stonesystems.io/public-forms/submit"','data-submit-url="local"')
     s=s.replace(FORM_PATCH_OLD,FORM_PATCH_NEW)
@@ -200,7 +200,7 @@ for f in glob.glob(SRC+'/**/index.html',recursive=True):
     if path=='':
         s=s.replace('Serving <span class="capitalize">Long Island</span>','Serving <span class="capitalize">NYC &amp; Long Island</span>')
         s=s.replace('Services Across\nLong Island','Services Across\nNYC &amp; Long Island')
-        s=s.replace('Based in Lynbrook — serving every corner of Long Island.','Based in Farmingdale — serving Manhattan, Brooklyn, Queens, the Bronx and Long Island.')
+        s=s.replace('Based in Lynbrook — serving every corner of Long Island.','Based in Lynbrook — serving Manhattan, Brooklyn, Queens, the Bronx and Long Island.')
     slug=path.split('/')[-1]
     if path in ('areas/east-hamptons-ny','areas/west-hamptons-ny'): continue  # replaced by /areas/east-hampton/ and /areas/westhampton/ (301)
     if path.startswith('areas/') and slug in AREAS:
@@ -311,7 +311,7 @@ exec(open(ROOT+'/build/projects.py').read(),{})
 
 # ---- Hamptons prominence (links, footer, home spotlight)
 exec(open(ROOT+'/build/sitewide_hamptons.py').read(),globals())
-exec(open(ROOT+'/build/farmingdale.py').read(),globals())
+exec(open(ROOT+'/build/lynbrook.py').read(),globals())
 # ---- painting / plaster / drywall: nav, grid, footer, schema, drywall page upgrade
 exec(open(ROOT+'/build/services_extra.py').read(),globals())
 # ---- optional copy tweaks (owner approval pending; separate commit)
