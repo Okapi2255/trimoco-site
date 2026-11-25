@@ -61,7 +61,7 @@ DESC={WV:'walnut and white kitchen cabinetry, marble slab counters and a marble 
       SOHO:'a bathroom with large-format tile, a glass walk-in shower and a freestanding tub, a kitchen with a marble waterfall island, built-in shelving and closets, and light wood floors',
       E90:'ribbed green-gray wall tile and a shower with built-in niches',AST:'white subway tile, a bathtub with shower and a wood vanity',
       CH_A:'kitchen cabinetry and a new backsplash',CH_B:'green custom kitchen cabinetry',MAN_C:'blue custom cabinetry and a stone backsplash',
-      CH_G:'a bathroom during construction, with new framing, drywall and cement board for the shower',CH_H:'a painted window seat with a built-in radiator cover',
+      CH_G:'a finished bathroom with white subway tile, a glass shower and a chrome towel warmer, plus in-progress framing and cement board',CH_H:'a painted window seat with a built-in radiator cover',
       CH_I:'white double closet doors with recessed panels',HK:'white cabinets, marble counters and stainless steel appliances',
       UWS_K:'cream custom cabinetry, white counters, a gas range and brass fixtures',LIN:'white cabinets, a marble island, stainless steel appliances and pendant lights'}
 # accurate alts / titles for photos whose original captions were wrong
@@ -69,6 +69,10 @@ PH[4]['alt']='Shower walls in cement board with a recessed niche opening, during
 PH[25]['alt']='White built-in shelving and closets in a hallway, with a view into the bathroom'
 PH[30]['alt']='White double closet doors with recessed panels and chrome handles'; PH[30]['title']='Double Closet Door Installation'
 PH[29]['title']='Modern Kitchen with Marble Waterfall Island'
+# owner (Nov 25, 2026): all five Chelsea jobs were residential apartments, not commercial
+PH[11]['alt']='Modern suspended ceiling with recessed lights, drywall walls, and wood paneling in a residential apartment'
+PH[18]['alt']='Kitchen with stainless steel equipment, recessed lighting, and wood accent wall in a residential apartment'
+PH[18]['title']='Kitchen Installation'
 OLD_ALT={i:html.unescape(c[2]) for i,c in enumerate(cards)}; OLD_T={i:html.unescape(c[0]) for i,c in enumerate(cards)}
 LOCFILE={PH[i]['file']:LOC[g[0]] for g in GROUPS if g[0] in LOC for i in g[2]}
 WV_FILES=set(LOCFILE)
@@ -77,7 +81,7 @@ for i,p in enumerate(PH):
     if p['file'] in LOCFILE: p['alt']=p['alt']+', '+LOCFILE[p['file']]
 PHALT={p['file']:p['alt'] for p in PH}
 # old wrong captions anywhere else (e.g. JSON-LD captions, figcaptions)
-ALT_FIX={OLD_ALT[i]:PH[i]['alt'] for i in (4,25,30)}
+ALT_FIX={OLD_ALT[i]:PH[i]['alt'] for i in (4,25,30,11,18)}
 # thumbnails (640px wide) for gallery grids
 os.makedirs(OUT+'/images/projects/thumbs',exist_ok=True)
 DIM={}
@@ -106,6 +110,108 @@ def pic(f,thumb=True,eager=False,alt=None):
 
 def cover(o):
     return pic(PH[o[2][0]]['file'],alt=PH[o[2][0]]['alt']).replace('<img ','<img class="w-full h-full object-cover" ')
+
+
+# Finished Chelsea bathroom stills and walkthrough (owner video, Nov 25, 2026).
+# Stills are not in the original 50-photo PH list. page() writes the in-progress
+# gallery first; apply_chelsea_bath_finished() prepends the finished section.
+CH_BATH_FINISHED = [
+    {"file":"chelsea-bath-finished-01-shower-glass-tile.webp","w":540,"h":960,"tw":540,"th":960,
+     "alt":"Finished Chelsea apartment bathroom with white subway tile, a glass shower door, a recessed niche, a mosaic accent band, a rain shower head and a handheld sprayer"},
+    {"file":"chelsea-bath-finished-02-vanity-mirror-faucet.webp","w":540,"h":960,"tw":540,"th":960,
+     "alt":"Finished Chelsea apartment bathroom vanity with a chrome faucet, a marble-look mosaic band and a frameless mirror reflecting the glass shower"},
+    {"file":"chelsea-bath-finished-03-chrome-towel-warmer.webp","w":540,"h":960,"tw":540,"th":960,
+     "alt":"Chrome heated towel warmer on a beige wall above white subway tile in a finished Chelsea apartment bathroom"},
+    {"file":"chelsea-bath-finished-04-towel-warmer-and-toilet.webp","w":540,"h":960,"tw":540,"th":960,
+     "alt":"Finished Chelsea apartment bathroom with a chrome towel warmer, white subway tile, a mosaic accent band and a white toilet"},
+    {"file":"chelsea-bath-finished-05-tile-niche-and-window.webp","w":540,"h":960,"tw":540,"th":960,
+     "alt":"Finished Chelsea apartment bathroom with white subway tile, a recessed toilet-paper niche, mosaic floor and a narrow window"},
+]
+CH_BATH_VIDEO = {
+    "src":"/images/projects/chelsea-manhattan-bathroom-finished.mp4",
+    "poster":"/images/projects/chelsea-bath-finished-poster.webp",
+    "name":"Finished Chelsea apartment bathroom walkthrough",
+    "description":"A walkthrough of a finished apartment bathroom renovation in Chelsea, Manhattan by Trimoco LLC, showing the glass shower, subway tile, vanity, towel warmer and toilet.",
+    "uploadDate":"2026-11-25",
+    "duration":"PT51.5S",
+    "width":720,"height":1280,
+}
+CH_BATH_DESC = "Photos and a walkthrough video of a finished bathroom renovation in a Chelsea, Manhattan apartment by Trimoco LLC, plus in-progress photos of the framing, drywall and cement board."
+
+def _finished_pic(item, eager=False):
+    f=item["file"]
+    src="/images/projects/thumbs/"+f
+    ss=f' srcset="/images/projects/thumbs/{f} {item["tw"]}w, /images/projects/{f} {item["w"]}w" sizes="(max-width: 640px) 92vw, 380px"'
+    return f'<img src="{src}"{ss} alt="{esc(item["alt"])}" width="{item["w"]}" height="{item["h"]}" loading="{"eager" if eager else "lazy"}" decoding="async">'
+
+def apply_chelsea_bath_finished(s, title):
+    """Prepend finished stills + muted walkthrough video above the in-progress gallery."""
+    n_fin=len(CH_BATH_FINISHED); n_old=2; n_all=n_fin+n_old
+    url=BASE+"/projects/chelsea-manhattan-bathroom-renovation/"
+    desc=CH_BATH_DESC
+    s=re.sub(r'(Chelsea, Manhattan · )2 photos', r'\g<1>5 finished photos, 1 video, and 2 in-progress photos', s, count=1)
+    s=s.replace(
+        "Photos from this Trimoco LLC project. Tap any photo to enlarge it, then swipe or use the arrow keys to browse.",
+        "A walkthrough video and photos of the finished bathroom, with in-progress photos of the framing and cement board below. Tap any photo to enlarge it, then swipe or use the arrow keys to browse.",
+        1)
+    for prop in ["description","og:description","twitter:description"]:
+        s=re.sub(rf'<meta (property|name)="{prop}" content="[^"]*">', rf'<meta \1="{prop}" content="{esc(desc)}">', s)
+    og=BASE+"/images/projects/chelsea-bath-finished-01-shower-glass-tile.webp"
+    for prop in ["og:image","twitter:image"]:
+        s=re.sub(rf'<meta (property|name)="{prop}" content="[^"]*">', rf'<meta \1="{prop}" content="{og}">', s)
+    # bump in-progress lightbox indices and "of 2" labels
+    s=s.replace('data-lb-index="0" aria-label="Enlarge photo 1 of 2:', f'data-lb-index="{n_fin}" aria-label="Enlarge photo {n_fin+1} of {n_all}:')
+    s=s.replace('data-lb-index="1" aria-label="Enlarge photo 2 of 2:', f'data-lb-index="{n_fin+1}" aria-label="Enlarge photo {n_fin+2} of {n_all}:')
+    figures=""
+    for k,item in enumerate(CH_BATH_FINISHED):
+        figures += (
+            f'<figure class="m-0"><button type="button" class="pg-item" data-lb-index="{k}" '
+            f'aria-label="Enlarge photo {k+1} of {n_all}: {esc(item["alt"])}">'
+            f'{_finished_pic(item, eager=k<3)}</button>'
+            f'<figcaption class="pg-cap">{esc(item["alt"])}</figcaption></figure>'
+        )
+    video_html = (
+        f'<figure class="m-0 pg-video-wrap mb-8"><video class="pg-video" muted controls playsinline preload="none" '
+        f'poster="{CH_BATH_VIDEO["poster"]}" width="{CH_BATH_VIDEO["width"]}" height="{CH_BATH_VIDEO["height"]}">'
+        f'<source src="{CH_BATH_VIDEO["src"]}" type="video/mp4"></video>'
+        f'<figcaption class="pg-cap">Walkthrough of the finished Chelsea apartment bathroom.</figcaption></figure>'
+    )
+    finished = (
+        f'<section class="section-pad" aria-label="Finished result"><div class="container-site">'
+        f'<h2 class="text-[clamp(1.5rem,3vw,2rem)] font-bold mb-6">Finished result</h2>'
+        f'{video_html}<div class="pg-grid">{figures}</div></div></section>'
+    )
+    # existing gallery becomes "In progress"
+    s=s.replace(
+        '<section class="section-pad" aria-label="Project photos"><div class="container-site"><div class="pg-grid">',
+        finished+'<section class="section-pad" aria-label="In-progress photos"><div class="container-site">'
+        '<h2 class="text-[clamp(1.5rem,3vw,2rem)] font-bold mb-6">In progress</h2><div class="pg-grid">',
+        1)
+    # lightbox data: finished first, then in-progress
+    m=re.search(r'<script type="application/json" id="lb-data">(.*?)</script>',s,re.S)
+    assert m, "lb-data missing"
+    old_lb=json.loads(m.group(1))
+    new_lb=[{"src":"/images/projects/"+item["file"],"alt":item["alt"]} for item in CH_BATH_FINISHED]+old_lb
+    s=s[:m.start(1)]+json.dumps(new_lb)+s[m.end(1):]
+    # ImageGallery schema: prepend finished images, update description
+    def ld(m):
+        d=json.loads(m.group(1))
+        if d.get("@type")=="ImageGallery":
+            d["description"]=desc
+            finished_imgs=[{"@type":"ImageObject","contentUrl":BASE+"/images/projects/"+item["file"],"caption":item["alt"]} for item in CH_BATH_FINISHED]
+            d["image"]=finished_imgs+d.get("image",[])
+        return '<script type="application/ld+json">'+json.dumps(d,ensure_ascii=False)+"</script>"
+    s=re.sub(r'<script type="application/ld\+json">(.*?)</script>', ld, s, flags=re.S)
+    video_ld={
+        "@context":"https://schema.org","@type":"VideoObject",
+        "name":CH_BATH_VIDEO["name"],"description":CH_BATH_VIDEO["description"],
+        "thumbnailUrl":BASE+CH_BATH_VIDEO["poster"],
+        "contentUrl":BASE+CH_BATH_VIDEO["src"],
+        "uploadDate":CH_BATH_VIDEO["uploadDate"],"duration":CH_BATH_VIDEO["duration"],
+    }
+    style='<style>.pg-video-wrap{max-width:28rem}.pg-video{width:100%;height:auto;border-radius:.75rem;background:#111;display:block}</style>'
+    s=s.replace("</head>", style+'<script type="application/ld+json">'+json.dumps(video_ld,ensure_ascii=False)+"</script></head>",1)
+    return s
 
 def page(sl,title,ids):
     url=f'{BASE}/projects/{sl}/'; n=len(ids)
@@ -145,10 +251,19 @@ def page(sl,title,ids):
     os.makedirs(f'{OUT}/projects/{sl}',exist_ok=True); open(f'{OUT}/projects/{sl}/index.html','w').write(s)
 
 for g in GROUPS: page(*g)
+bp=OUT+'/projects/chelsea-manhattan-bathroom-renovation/index.html'
+open(bp,'w').write(apply_chelsea_bath_finished(open(bp).read(), [g[1] for g in GROUPS if g[0]==CH_G][0]))
 import shutil
 for d in glob.glob(OUT+'/projects/*/'):
     if os.path.basename(d.rstrip('/')) not in {g[0] for g in GROUPS}: shutil.rmtree(d)  # old slugs are 301-redirected (render.yaml)
 
+# apply corrected alts/titles everywhere, including pages already linkified
+for _f in glob.glob(OUT+'/**/*.html',recursive=True):
+    _s=open(_f).read(); _s0=_s
+    for o_,n_ in ALT_FIX.items(): _s=_s.replace(esc(o_),esc(n_)).replace(o_,n_)
+    if OLD_T[18]!=PH[18]['title']:
+        _s=_s.replace(esc(OLD_T[18]),esc(PH[18]['title'])).replace(OLD_T[18],PH[18]['title'])
+    if _s!=_s0: open(_f,'w').write(_s)
 # make every project photo elsewhere on the site link to its project page
 def linkify(s):
     def rep(m):
