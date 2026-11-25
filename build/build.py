@@ -311,6 +311,7 @@ exec(open(ROOT+'/build/projects.py').read(),{})
 
 # ---- Hamptons prominence (links, footer, home spotlight)
 exec(open(ROOT+'/build/sitewide_hamptons.py').read(),globals())
+exec(open(ROOT+'/build/sitewide_chelsea.py').read(),globals())
 exec(open(ROOT+'/build/lynbrook.py').read(),globals())
 # ---- painting / plaster / drywall: nav, grid, footer, schema, drywall page upgrade
 exec(open(ROOT+'/build/services_extra.py').read(),globals())
