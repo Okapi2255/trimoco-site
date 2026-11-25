@@ -87,7 +87,7 @@ def publish_chelsea_page(s):
                 '<span class="section-label section-label-dark">Service Area</span>',1)
     return s
 
-# Owner correction (Nov 25, 2026): this job is a custom radiator cover only — not a window seat.
+# Owner correction (Nov 25, 2026): this job is a custom radiator cover and a new window sill — not a window seat.
 # Rewrite any leftover old slug so a later rebuild cannot restore it.
 OLD_RAD_SLUG='chelsea-manhattan-window-seat-radiator-cover'
 NEW_RAD_SLUG='chelsea-manhattan-radiator-cover'

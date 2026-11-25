@@ -24,7 +24,7 @@ GROUPS=[
  ('90th-street-manhattan-bathroom-tile-renovation','90th Street, Manhattan: Master Bathroom Tile Renovation',[9,20,21]),
  ('astoria-queens-bathroom-renovation','Astoria, Queens: Complete Bathroom Renovation',[36]),
  ('chelsea-manhattan-bathroom-renovation','Chelsea, Manhattan: Bathroom Renovation (Framing and Cement Board)',[2,4]),
- ('chelsea-manhattan-radiator-cover','Chelsea, Manhattan: Custom Radiator Cover',[22]),
+ ('chelsea-manhattan-radiator-cover','Chelsea, Manhattan: Custom Radiator Cover and New Window Sill',[22]),
  ('chelsea-manhattan-double-closet-doors','Chelsea, Manhattan: Double Closet Door Installation',[30]),
  ('hells-kitchen-manhattan-modern-kitchen-renovation',"Hell's Kitchen, Manhattan: Modern Kitchen Renovation",[39]),
  ('upper-west-side-contemporary-kitchen-custom-cabinetry','Upper West Side, Manhattan: Contemporary Kitchen with Custom Cabinetry',[44]),
@@ -61,7 +61,7 @@ DESC={WV:'walnut and white kitchen cabinetry, marble slab counters and a marble 
       SOHO:'a bathroom with large-format tile, a glass walk-in shower and a freestanding tub, a kitchen with a marble waterfall island, built-in shelving and closets, and light wood floors',
       E90:'ribbed green-gray wall tile and a shower with built-in niches',AST:'white subway tile, a bathtub with shower and a wood vanity',
       CH_A:'kitchen cabinetry and a new backsplash',CH_B:'green custom kitchen cabinetry',MAN_C:'blue custom cabinetry and a stone backsplash',
-      CH_G:'a finished bathroom with white subway tile, a glass shower and a chrome towel warmer, plus in-progress framing and cement board',CH_H:'a custom radiator cover',
+      CH_G:'a finished bathroom with white subway tile, a glass shower and a chrome towel warmer, plus in-progress framing and cement board',CH_H:'a custom radiator cover and a new window sill',
       CH_I:'white double closet doors with recessed panels',HK:'white cabinets, marble counters and stainless steel appliances',
       UWS_K:'cream custom cabinetry, white counters, a gas range and brass fixtures',LIN:'white cabinets, a marble island, stainless steel appliances and pendant lights'}
 # accurate alts / titles for photos whose original captions were wrong
@@ -69,7 +69,7 @@ PH[4]['alt']='Shower walls in cement board with a recessed niche opening, during
 PH[25]['alt']='White built-in shelving and closets in a hallway, with a view into the bathroom'
 PH[30]['alt']='White double closet doors with recessed panels and chrome handles'; PH[30]['title']='Double Closet Door Installation'
 PH[29]['title']='Modern Kitchen with Marble Waterfall Island'
-PH[22]['alt']='Cream-painted custom radiator cover'; PH[22]['title']='Custom Radiator Cover'
+PH[22]['alt']='Cream-painted custom radiator cover and a new window sill'; PH[22]['title']='Custom Radiator Cover and New Window Sill'
 # owner (Nov 25, 2026): all five Chelsea jobs were residential apartments, not commercial
 PH[11]['alt']='Modern suspended ceiling with recessed lights, drywall walls, and wood paneling in a residential apartment'
 PH[18]['alt']='Kitchen with stainless steel equipment, recessed lighting, and wood accent wall in a residential apartment'
