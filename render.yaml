@@ -75,6 +75,5 @@ services:
       - {type: redirect, source: /portfolio/*, destination: /projects/}
       - {type: redirect, source: /author/trimoco, destination: /about/}
       - {type: redirect, source: /author/trimoco/, destination: /about/}
-      - {type: redirect, source: /cgi-sys/defaultwebpage.cgi, destination: /}
       - {type: redirect, source: /services, destination: /services/general-contractor/}
       - {type: redirect, source: /services/, destination: /services/general-contractor/}
